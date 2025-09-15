@@ -1,0 +1,465 @@
+:root {
+  --primary-color: #4361ee;
+  --primary-light: #eef1ff;
+  --secondary-color: #3f37c9;
+  --success-color: #4cc9f0;
+  --error-color: #f94144;
+  --warning-color: #f8961e;
+  --light-color: #f8f9fa;
+  --dark-color: #14213d;
+  --gray-color: #adb5bd;
+  --light-gray: #e9ecef;
+  --border-color: #dee2e6;
+  --text-color: #212529;
+  --text-secondary: #495057;
+  --border-radius: 12px;
+  --border-radius-sm: 8px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+/* Base Container */
+.calendar-viewer {
+  width: 95%;
+  max-width: 1400px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+/* Header Styles */
+.viewer-header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.viewer-header h1 {
+  color: var(--dark-color);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+/* View Controls */
+.view-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.view-tabs {
+  display: flex;
+  background: var(--light-gray);
+  border-radius: var(--border-radius-sm);
+  padding: 4px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.view-tab {
+  padding: 8px 16px;
+  background: none;
+  border: none;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.view-tab:hover {
+  color: var(--primary-color);
+}
+
+.view-tab.active {
+  background: white;
+  color: var(--primary-color);
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--box-shadow);
+}
+
+.year-filter {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.year-filter label {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.year-filter select {
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  background: white;
+  font-size: 0.95rem;
+  min-width: 120px;
+}
+
+/* List View */
+.list-view {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.calendar-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.calendar-card {
+  background: white;
+  border-radius: var(--border-radius);
+  /* padding: 1.25rem; */
+  box-shadow: var(--box-shadow);
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1px solid var(--border-color);
+}
+
+.calendar-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-card.selected {
+  border-left: 4px solid var(--primary-color);
+  background-color: #737373;
+}
+
+.card-header {
+  margin-bottom: 1rem;
+}
+
+.card-header h3 {
+  color: var(--dark-color);
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.date-range {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.card-stats {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.view-stat-label {
+  font-size: 0.8rem;
+  color: #14d0ff;
+}
+
+.calendar-details {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--box-shadow);
+  border: 1px solid var(--border-color);
+}
+
+.calendar-details h2 {
+  color: var(--dark-color);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.detail-section {
+  margin-bottom: 1.5rem;
+}
+
+.detail-section h3 {
+  color: var(--dark-color);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 1.1rem;
+}
+
+.event-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  padding: 0;
+  margin: 0;
+}
+
+.event-list li {
+  padding: 0.75rem;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.9rem;
+}
+
+.exam-date {
+  background: rgba(76, 201, 240, 0.1);
+  border-left: 3px solid var(--success-color);
+}
+
+.holiday {
+  background: rgba(249, 65, 68, 0.1);
+  border-left: 3px solid var(--error-color);
+}
+
+.no-events {
+  color: var(--gray-color);
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+.no-results {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-secondary);
+}
+
+/* Calendar View */
+.calendar-view {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--box-shadow);
+  border: 1px solid var(--border-color);
+}
+
+.calendar-selection {
+  text-align: center;
+}
+
+.calendar-selection h2 {
+  margin-bottom: 1.5rem;
+  color: var(--dark-color);
+  font-size: 1.5rem;
+}
+
+.monthly-calendar h2 {
+  text-align: center;
+  color: var(--dark-color);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.calendar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.nav-button {
+  padding: 0.75rem;
+  background: var(--light-gray);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 0.95rem;
+}
+
+.nav-button:hover {
+  background: var(--primary-light);
+  color: var(--primary-color);
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legend-color {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.legend-color.exam {
+  background: var(--success-color);
+}
+
+.legend-color.holiday {
+  background: var(--error-color);
+}
+
+.months-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.month-card {
+  background: var(--light-gray);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.month-header {
+  background: var(--primary-color);
+  color: white;
+  padding: 0.75rem 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.month-events {
+  padding: 1rem;
+}
+
+.event-group {
+  margin-bottom: 1rem;
+}
+
+.event-group h4 {
+  margin-bottom: 0.75rem;
+  color: var(--dark-color);
+  font-size: 1rem;
+}
+
+.event-group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.exam-event,
+.holiday-event {
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.9rem;
+}
+
+.exam-event {
+  background: rgba(76, 201, 240, 0.1);
+  border-left: 3px solid var(--success-color);
+}
+
+.holiday-event {
+  background: rgba(249, 65, 68, 0.1);
+  border-left: 3px solid var(--error-color);
+}
+
+/* Responsive Breakpoints */
+@media (min-width: 576px) {
+  .view-controls {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .calendar-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .event-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .calendar-nav {
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .legend {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .list-view {
+    flex-direction: row;
+  }
+  
+  .calendar-cards {
+    grid-template-columns: 1fr;
+    flex: 0 0 300px;
+  }
+  
+  .months-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .calendar-viewer {
+    padding: 2rem;
+  }
+  
+  .viewer-header h1 {
+    font-size: 2rem;
+  }
+  
+  .months-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .event-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .months-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Print Styles */
+@media print {
+  .calendar-viewer {
+    box-shadow: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .view-controls,
+  .nav-button {
+    display: none;
+  }
+  
+  .month-card {
+    page-break-inside: avoid;
+    margin-bottom: 20px;
+  }
+  
+  .month-header {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

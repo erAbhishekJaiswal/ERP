@@ -1,0 +1,58 @@
+.dean-sidebar {
+    font-family: serif;
+    width: 20%;
+    background-color: #0d0d2b;
+    border-right: 2px solid #b9b9bc;
+}
+
+.dean-sidebar .side-links {
+    list-style-type: none;
+    padding: 15px;
+}
+
+.dean-sidebar li {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1rem;
+    color: #ffffff;
+    padding: 8px 0;
+}
+
+.dean-sidebar .alist {
+    display: flex;
+    flex-direction: row;
+    padding: 8px;
+    justify-content: start;
+    align-items: center;
+}
+
+.dean-sidebar .ad-min {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.dean-sidebar .toggle-btn {
+    background: transparent;
+    color: white;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.dean-sidebar .dean-list {
+    padding-left: 20px;
+    margin-left: 15px;
+    list-style-type: square;
+}
+
+.dean-sidebar .dean-list li {
+    padding: 5px 0;
+}
+
+.dean-sidebar svg {
+    margin-right: 8px;
+}

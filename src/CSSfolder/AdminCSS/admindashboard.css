@@ -1,0 +1,29 @@
+.registrarbox{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
+.enrollbox{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+.addmitionbox{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 80%;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+.activitybox{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    /* flex-wrap: wrap; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}

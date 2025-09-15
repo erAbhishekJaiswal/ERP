@@ -1,0 +1,29 @@
+.deandashbox{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    align-items: center;
+    width: 90%;
+}
+.acdmicbox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* align-items: center; */
+    width: 80%;
+}
+.facultybox{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+.alartbox{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+.quicklink{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}

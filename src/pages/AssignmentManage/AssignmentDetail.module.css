@@ -1,0 +1,349 @@
+.container {
+   width: 95%;
+    margin: 30px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.title {
+    font-size: 2.2rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    color: #7f8c8d;
+    font-size: 1rem;
+}
+
+.course {
+    background-color: #3498db;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.dueDate {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.icon {
+    color: #e74c3c;
+}
+
+.detailsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.detailCard {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.2s;
+}
+
+.detailCard:hover {
+    transform: translateY(-3px);
+}
+
+.detailIcon {
+    font-size: 1.5rem;
+    color: #3498db;
+}
+
+.detailCard h4 {
+    margin: 0 0 0.3rem 0;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    font-weight: 600;
+}
+
+.detailCard p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #2c3e50;
+}
+
+.contentSection {
+    margin-bottom: 2.5rem;
+}
+
+.sectionTitle {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #f1f1f1;
+}
+
+.description, .guidelines {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    line-height: 1.6;
+    white-space: pre-line;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.attachments {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.attachmentItem {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #2c3e50;
+    transition: all 0.2s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.attachmentItem:hover {
+    background: #f8f9fa;
+    transform: translateX(5px);
+}
+
+.fileIcon {
+    font-size: 1.5rem;
+    color: #3498db;
+}
+
+.fileInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.fileName {
+    font-weight: 500;
+}
+
+.fileSize {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+}
+
+.rubric {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.rubricTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.rubricTable th, .rubricTable td {
+    padding: 0.8rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.rubricTable th {
+    background-color: #f8f9fa;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.rubricTable tr:last-child td {
+    border-bottom: none;
+}
+
+.footer {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eaeaea;
+    text-align: right;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+/* Loading and error states */
+.loadingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    gap: 1rem;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.errorContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    gap: 1rem;
+    text-align: center;
+}
+
+.errorIcon {
+    width: 60px;
+    height: 60px;
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.notFound {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    gap: 1rem;
+    text-align: center;
+}
+
+/* Responsive adjustments */
+/* @media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .title {
+        font-size: 1.8rem;
+    }
+    
+    .meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .detailsGrid {
+        grid-template-columns: 1fr;
+    }
+} */
+
+
+
+/* Existing media query retained */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .detailsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .sectionTitle {
+        font-size: 1.3rem;
+    }
+
+    .detailCard {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .attachmentItem {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* Additional media query for small mobile devices */
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .meta {
+        font-size: 0.9rem;
+    }
+
+    .course {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.6rem;
+    }
+
+    .detailCard p {
+        font-size: 1rem;
+    }
+
+    .sectionTitle {
+        font-size: 1.2rem;
+    }
+
+    .rubricTable th, .rubricTable td {
+        padding: 0.6rem 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    .fileIcon {
+        font-size: 1.2rem;
+    }
+
+    .fileName {
+        font-size: 0.95rem;
+    }
+
+    .fileSize {
+        font-size: 0.75rem;
+    }
+
+    .footer {
+        font-size: 0.8rem;
+        text-align: center;
+    }
+}

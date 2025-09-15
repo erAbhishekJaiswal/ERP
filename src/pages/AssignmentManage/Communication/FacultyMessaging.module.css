@@ -1,0 +1,369 @@
+/* FacultyMessaging.module.css */
+.container {
+    margin: 20px;
+    padding: 2rem;
+    width: 95%;
+    background-color: #dedede;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  }
+  
+  .header {
+    margin-bottom: 2rem;
+  }
+  
+  .header h1 {
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .tabs {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .tabButton {
+    padding: 0.75rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #7f8c8d;
+    position: relative;
+  }
+  
+  .tabButton.active {
+    color: #3498db;
+    font-weight: 500;
+  }
+  
+  .tabButton.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #3498db;
+  }
+  
+  .announcementsSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .createAnnouncement {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .announcementForm {
+    margin-top: 1rem;
+  }
+  
+  .formGroup {
+    margin-bottom: 1.5rem;
+  }
+  
+  .formGroup label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #34495e;
+  }
+  
+  .formGroup input[type="text"],
+  .formGroup input[type="datetime-local"],
+  .formGroup select,
+  .formGroup textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .formGroup textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  .courseSelection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  
+  .courseCheckbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .scheduleOption {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .postButton {
+    background: #2ecc71;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+    transition: background 0.3s;
+  }
+  
+  .postButton:hover {
+    background: #27ae60;
+  }
+  
+  .previousAnnouncements {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .announcementsList {
+    margin-top: 1rem;
+  }
+  
+  .announcementCard {
+    padding: 1rem;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  
+  .announcementHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+  
+  .announcementHeader h4 {
+    margin: 0;
+  }
+  
+  .announcementMeta {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+  }
+  
+  .announcementContent {
+    margin: 0.5rem 0;
+    color: #34495e;
+  }
+  
+  .announcementActions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+  }
+  
+  .editButton {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .deleteButton {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .messagesSection {
+    margin-top: 2rem;
+  }
+  
+  .messagesContainer {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+  }
+  
+  .inbox {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .messagesList {
+    margin-top: 1rem;
+    max-height: 600px;
+    overflow-y: auto;
+  }
+  
+  .messageItem {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+  }
+  
+  .messageItem.unread {
+    background: #e3f2fd;
+  }
+  
+  .messageHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.25rem;
+  }
+  
+  .messageHeader h4 {
+    margin: 0;
+  }
+  
+  .messageDate {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+  }
+  
+  .messageSubject {
+    font-weight: 500;
+    margin: 0.25rem 0;
+  }
+  
+  .messagePreview {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+  
+  .messageView {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .messageForm {
+    margin-top: 1rem;
+  }
+  
+  .sendButton {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+    transition: background 0.3s;
+  }
+  
+  .sendButton:hover {
+    background: #2980b9;
+  }
+  
+  .remindersSection {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  
+  .upcomingDeadlines {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .deadlinesList {
+    margin-top: 1rem;
+  }
+  
+  .deadlineItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .deadlineInfo h4 {
+    margin: 0 0 0.25rem 0;
+  }
+  
+  .deadlineInfo p {
+    margin: 0;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+  }
+  
+  .remindButton {
+    background: #f39c12;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .reminderSettings {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .settingsForm {
+    margin-top: 1rem;
+  }
+  
+  .settingItem {
+    margin-bottom: 1rem;
+  }
+  
+  .settingItem label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .settingItem textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  .saveButton {
+    background: #2ecc71;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+    transition: background 0.3s;
+  }
+  
+  .saveButton:hover {
+    background: #27ae60;
+  }

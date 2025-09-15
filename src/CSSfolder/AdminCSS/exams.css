@@ -1,0 +1,144 @@
+.createexambox{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    color: black;
+    border-radius: 50px;
+    border: 1px solid black;
+}
+.inputsection{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 80%;
+    margin: 10px;
+    gap: 20px;
+}
+.innerbox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 10px;
+    gap: 5px;
+}
+#department{
+    width: 55%;
+    padding: 5px;
+    border-radius: 20px;
+    border: 2px solid black;
+}
+.doption{
+    background-color: rgb(184, 166, 149);
+}
+.examhead{
+    font-size: 25px;
+    font-weight: 700;
+    padding: 10px;
+}
+.elabel{
+    font-size: 17px;
+    width: 45%;
+}
+.einput{
+    padding: 5px;
+    width: 55%;
+    border-radius: 50px;
+}
+.extext{
+    font-size: 9px;
+    display: flex;
+    align-items: center;
+}
+.ebutton{
+    margin: 20px;
+    display: flex;
+    color: white;
+    padding: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    background-color: blue;
+    border: none;
+    border-radius: 50px;
+}
+
+
+
+
+
+
+
+/* ***************************** All Exams CSS ************************************ */
+
+.allexams{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 80%;
+}
+.examlists{
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; */
+    width: 100%;
+}
+.exambutton{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 10px;
+}
+.allexamnamebox{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.Allexamname{
+    font-size: 20px;
+    margin: 10px;
+}
+.secondexambox{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.ebutton{
+    margin: 20px;
+}
+
+
+
+
+/* *****************************viewExamDetails View Exams by Id CSS ************************************ */
+
+.viewexamdetails{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    color: black;
+    gap: 20px;
+    width: 80%;
+    border-radius: 20px;
+}

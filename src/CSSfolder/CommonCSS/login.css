@@ -1,0 +1,347 @@
+/* Login.css - Responsive with animations */
+.whole-login-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+}
+
+.login {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.loginsection {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  border-radius: 20px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, 
+              rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, 
+              rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  overflow: hidden;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.leftpart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 40px 20px;
+  color: white;
+  width: 100%;
+  min-height: 300px;
+  text-align: center;
+}
+
+.leftpart-inner {
+  max-width: 400px;
+  width: 100%;
+}
+
+.leftpart-header {
+  margin-bottom: 30px;
+  animation: fadeInDown 0.5s ease-out;
+}
+
+.lefthead {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.leftpart-content {
+  margin-bottom: 30px;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.leftpara {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.leftpart-button {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.butn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: transparent;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s;
+  text-align: center;
+}
+
+.butn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.login-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background: white;
+  width: 100%;
+  min-height: 400px;
+}
+
+.login-header {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #2d3748;
+  animation: fadeInDown 0.5s ease-out;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 400px;
+  gap: 20px;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.studentlogin-input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+  background: #f8fafc;
+}
+
+.studentlogin-input:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  outline: none;
+  background: white;
+}
+
+.btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(to right, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.auth-footer {
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 1s ease-out;
+}
+
+.auth-switch-text {
+  color: #718096;
+  margin-right: 8px;
+  font-size: 0.9rem;
+}
+
+.switch-button {
+  background: none;
+  border: none;
+  color: #667eea;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 0.9rem;
+  padding: 0;
+}
+
+.switch-button:hover {
+  color: #764ba2;
+  text-decoration: underline;
+}
+
+/* Admin Login Container */
+.auth-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  min-height: 600px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, 
+              rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, 
+              rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+.adminlogin-form-input{
+   width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    background: #f8fafc;
+}
+.adminlogin-form-input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    outline: none;
+    background: white;
+}
+
+/* Tablet and Desktop Styles */
+@media (min-width: 768px) {
+  .loginsection {
+    flex-direction: row;
+    height: 500px;
+  }
+  
+  .leftpart {
+    width: 50%;
+    height: 100%;
+    border-radius: 20px 0 0 20px;
+  }
+  
+  .login-inner {
+    width: 50%;
+    height: 100%;
+  }
+  
+  .auth-container {
+    flex-direction: row;
+    height: 600px;
+  }
+}
+
+@media (min-width: 992px) {
+  .lefthead {
+    font-size: 2rem;
+  }
+  
+  .login-header {
+    font-size: 2rem;
+  }
+  
+  .btn {
+    padding: 16px;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Additional CSS for home link and message */
+.home-link-container {
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.home-link {
+  color: #667eea;
+  text-decoration: none;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+
+.home-link:hover {
+  color: #764ba2;
+  text-decoration: underline;
+}
+
+.message {
+  margin-top: 20px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  color: #212529;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Error message style */
+.error-message {
+  color: #e53e3e;
+  font-size: 0.75rem;
+  position: absolute;
+  left: 0;
+  bottom: -18px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .home-link-container {
+    padding: 0 20px;
+  }
+  
+  .message {
+    max-width: 90%;
+  }
+}

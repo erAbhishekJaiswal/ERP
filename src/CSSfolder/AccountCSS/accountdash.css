@@ -1,0 +1,21 @@
+.accountdashboardbox{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+}
+.financebox{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+.feebox{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+.salarybox{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}

@@ -1,0 +1,240 @@
+/* Collaboration.css */
+
+.collaboration-container {
+    font-family: 'Segoe UI', sans-serif;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  .collaboration-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .collaboration-header h1 {
+    font-size: 2rem;
+    color: #222;
+  }
+  
+  .collaboration-tabs {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 1rem;
+  }
+  
+  .tab-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    background-color: #eee;
+    border-radius: 1.5rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .tab-btn:hover {
+    background-color: #ddd;
+  }
+  
+  .tab-btn.active {
+    background-color: #0077ff;
+    color: white;
+  }
+  
+  .collaboration-content {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  /* Review Cards */
+  .review-card,
+  .group-card,
+  .discussion-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  }
+  
+  .card-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #111;
+  }
+  
+  .review-meta,
+  .members,
+  .discussion-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+  
+  .status {
+    padding: 0.2rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    color: white;
+  }
+  
+  .status.pending { background: #f39c12; }
+  .status.in-progress { background: #3498db; }
+  .status.completed { background: #2ecc71; }
+  
+  .toggle-btn,
+  .save-btn,
+  .submit-btn,
+  .chat-btn,
+  .files-btn,
+  .view-btn,
+  .reply-btn,
+  .cancel-btn,
+  .post-btn,
+  .create-group-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .toggle-btn {
+    background: #eee;
+  }
+  
+  .save-btn {
+    background-color: #ffc107;
+  }
+  
+  .submit-btn {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .chat-btn,
+  .files-btn {
+    background-color: #17a2b8;
+    color: white;
+  }
+  
+  .view-btn {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .reply-btn {
+    background-color: #6f42c1;
+    color: white;
+  }
+  
+  .cancel-btn {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  .post-btn {
+    background-color: #0077ff;
+    color: white;
+  }
+  
+  .create-group-btn {
+    background-color: #343a40;
+    color: white;
+    width: 100%;
+  }
+  
+  /* Rubric Section */
+  .rubric-section {
+    margin-top: 1rem;
+    border-top: 1px solid #ccc;
+    padding-top: 1rem;
+  }
+  
+  .rubric-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  
+  .rubric-item input,
+  .rubric-item textarea,
+  .general-feedback textarea,
+  .discussion-form textarea,
+  .discussion-form input,
+  .discussion-form select {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    resize: vertical;
+  }
+  
+  /* Group Progress Bar */
+  .progress-container {
+    margin-top: 1rem;
+  }
+  
+  .progress-bar {
+    background-color: #e0e0e0;
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 0.25rem;
+  }
+  
+  .progress-fill {
+    background-color: #4caf50;
+    height: 100%;
+    transition: width 0.5s;
+  }
+  
+  /* Discussion Section */
+  .course-tag {
+    background: #eee;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .unread-badge {
+    background-color: #dc3545;
+    color: white;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    margin-top: 0.5rem;
+    display: inline-block;
+  }
+  
+  .discussion-form {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+  }
+  
+  /* Utility */
+  .member-tag {
+    background-color: #f1f1f1;
+    padding: 0.3rem 0.6rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+  }
+  

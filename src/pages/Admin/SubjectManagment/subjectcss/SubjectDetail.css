@@ -1,0 +1,279 @@
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3f37c9;
+    --accent-color: #4cc9f0;
+    --success-color: #4cc9f0;
+    --danger-color: #f72585;
+    --light-color: #f8f9fa;
+    --dark-color: #2b2d42;
+    --gray-color: #6c757d;
+    --light-gray: #e9ecef;
+  }
+  
+  .subject-detail-container {
+    width: 95%;
+    margin: 30px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  }
+  
+  .subject-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    cursor: auto;
+  }
+  
+  .subject-code-badge {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    /* margin-bottom: 1rem; */
+  }
+  .subject-delete-edit-button{
+    display: flex;
+    gap: 5px;
+  }
+  .edit-delete-btn{
+    background-color: #28b923;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+  }
+
+  .students-add-btn{
+    background-color: #f2da04;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+  }
+  .subject-delete-btn{
+    background-color: #ff2424;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .subject-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+  }
+  .subject-code-delete-box{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .subject-meta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .enrolledlist-btn{
+    padding: 10px;
+    background-color: #2222df;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .badge {
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  .credit-badge {
+    background-color: rgba(67, 97, 238, 0.1);
+    color: var(--primary-color);
+  }
+  
+  .semester-badge {
+    background-color: rgba(114, 9, 183, 0.1);
+    color: #7209b7;
+  }
+  
+  .year-badge {
+    background-color: rgba(76, 201, 240, 0.1);
+    color: var(--success-color);
+  }
+  
+  .status-badge {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+  }
+  
+  .status-badge.active {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+  }
+  
+  .status-badge.inactive {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+  }
+  
+  .subject-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .faculty-add-button{
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  @media (min-width: 992px) {
+    .subject-content {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .subject-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  .subject-card h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--light-gray);
+  }
+  
+  .overview-card {
+    grid-column: 1 / -1;
+  }
+  
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .info-item {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .info-label {
+    font-size: 0.875rem;
+    color: var(--gray-color);
+    margin-bottom: 0.25rem;
+  }
+  
+  .info-value {
+    font-weight: 500;
+  }
+  
+  .classes-list {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .class-badge {
+    background-color: var(--light-gray);
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.875rem;
+  }
+  
+  .syllabus-list {
+    list-style-type: none;
+  }
+  
+  .syllabus-list li {
+    display: flex;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px dashed var(--light-gray);
+  }
+  
+  .syllabus-number {
+    font-weight: 600;
+    margin-right: 0.75rem;
+    color: var(--primary-color);
+  }
+  
+  .syllabus-item {
+    flex: 1;
+  }
+  
+  .schedule-table {
+    width: 100%;
+    /* display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem; */
+  }
+  
+  .schedule-header {
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--light-gray);
+  }
+
+  /* .schedule-row-container{
+    display: flex;
+    flex-direction: column;
+  } */
+  
+  .schedule-row {
+    text-align: center;
+    border-bottom: 1px solid var(--light-gray);
+  }
+  
+  @media (max-width: 768px) {
+    .subject-header h1 {
+      font-size: 2rem;
+    }
+    
+    .info-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .schedule-table {
+      grid-template-columns: 1fr;
+    }
+    
+    .schedule-header,
+    .schedule-row {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.25rem;
+    }
+  }

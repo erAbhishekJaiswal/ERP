@@ -1,0 +1,321 @@
+/* Grades.css */
+
+.grades-container {
+    padding: 2rem;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9fafb;
+    color: #333;
+  }
+  
+  .grades-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .grades-header h1 {
+    font-size: 2.5rem;
+    color: #1f2937;
+    margin-bottom: 1rem;
+  }
+  
+  .grades-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .tab-btn {
+    background-color: #e5e7eb;
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .tab-btn.active {
+    background-color: #3b82f6;
+    color: white;
+  }
+  
+  .tab-btn:hover {
+    background-color: #60a5fa;
+    color: white;
+  }
+  
+  .grades-summary {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+  }
+  
+  .summary-card {
+    flex: 1;
+    background-color: white;
+    padding: 1.25rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: 250px;
+  }
+  
+  .summary-card .icon {
+    font-size: 2rem;
+    color: #2563eb;
+  }
+  
+  .summary-content h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #111827;
+  }
+  
+  .summary-content .value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 0.25rem;
+    color: #1d4ed8;
+  }
+  
+  .value.positive {
+    color: #16a34a;
+  }
+  
+  .assignments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .grade-card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+  }
+  
+  .grade-card:hover {
+    transform: translateY(-4px);
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .grade-display {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  
+  .grade {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #1e3a8a;
+  }
+  
+  .grade.A {
+    color: #10b981;
+  }
+  
+  .grade.B+ {
+    color: #f59e0b;
+  }
+  
+  .score {
+    font-size: 1rem;
+    color: #6b7280;
+  }
+  
+  .course-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    color: #374151;
+  }
+  
+  .comparison {
+    display: flex;
+    gap: 1rem;
+    font-weight: 500;
+  }
+  
+  .difference.positive {
+    color: #16a34a;
+  }
+  
+  .difference.negative {
+    color: #dc2626;
+  }
+  
+  .feedback-section {
+    margin-bottom: 1rem;
+  }
+  
+  .feedback-section h4 {
+    margin-bottom: 0.25rem;
+    color: #2563eb;
+  }
+  
+  .feedback-text {
+    color: #4b5563;
+    max-height: 3rem;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  
+  .feedback-text.expanded {
+    max-height: 200px;
+  }
+  
+  .toggle-feedback {
+    background: none;
+    border: none;
+    color: #3b82f6;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 0.5rem;
+  }
+  
+  .rubric-section {
+    background-color: #f3f4f6;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    margin-top: 1rem;
+  }
+  
+  .rubric-item {
+    margin-bottom: 0.75rem;
+  }
+  
+  .criterion-name {
+    font-weight: 600;
+    color: #1f2937;
+  }
+  
+  .score-bar {
+    background-color: #e5e7eb;
+    border-radius: 1rem;
+    overflow: hidden;
+    position: relative;
+    height: 20px;
+    margin-top: 0.25rem;
+  }
+  
+  .score-fill {
+    background-color: #60a5fa;
+    height: 100%;
+    border-radius: 1rem;
+  }
+  
+  .score-text {
+    position: absolute;
+    top: 0;
+    right: 0.5rem;
+    font-size: 0.85rem;
+    color: white;
+  }
+  
+  .rubric-comments h5 {
+    margin-top: 1rem;
+    font-weight: 600;
+    color: #1e40af;
+  }
+  
+  .progress-content {
+    margin-top: 2rem;
+  }
+  
+  .progress-chart h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: #1f2937;
+  }
+  
+  .chart-container {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  .chart-bar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50px;
+  }
+  
+  .chart-bar {
+    background-color: #3b82f6;
+    width: 100%;
+    border-radius: 0.5rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    transition: height 0.3s ease;
+  }
+  
+  .bar-value {
+    font-size: 0.75rem;
+    color: white;
+    margin-bottom: 0.25rem;
+  }
+  
+  .bar-label {
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+    color: #4b5563;
+  }
+  
+  .progress-stats {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .stat-card {
+    background-color: white;
+    flex: 1;
+    min-width: 200px;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  
+  .stat-card .icon {
+    font-size: 2rem;
+    color: #2563eb;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-card h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #1e3a8a;
+  }
+  
+  .stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1e40af;
+  }
+  
+  .stat-value.positive {
+    color: #10b981;
+  }
+  

@@ -1,0 +1,134 @@
+.calanderbox{
+    width: 85%;
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 20px;
+}
+.formsection{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.labels{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.dateinput{
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 20px;
+}
+.lb1{
+    width: 22%;
+}
+.lb2{
+    width: 20%;
+}
+.lb3{
+    width: 24%;
+}
+.calanderrange{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+}
+.selecteddates{
+    border: 1px solid black;
+}
+.datelist{
+    border: 1px solid black;
+}
+.rangebox{
+    width: 100%;
+}
+.range{
+    font-weight: 700;
+    display: flex;
+    justify-content: start;
+}
+.addbtn{
+    background-color: blue;
+    font-weight: 700;
+    padding: 5px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.createbtn{
+    background-color: blue;
+    width: 80%;
+    font-size: 16px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* ********************************* Acadmic Calander  ********************************/
+
+.clanderslist{
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    /* justify-content: space-between;
+    align-items: center; */
+    border: 1px solid white;
+    padding: 10px;
+    font-size: 20px;
+    margin: 15px;
+    background-color: white;
+    color: black;
+}
+.datesbox{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.examholybox{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.startdate{
+    margin: 5px;
+    width: 20%;
+    border: 1px solid white;
+}
+.enddate{
+    margin: 5px;
+    width: 20%;
+    border: 1px solid white;
+}
+.acadmicbtn{
+    background-color: blue;
+    font-weight: 700;
+    padding: 5px;
+    border: 1px solid white;
+    /* border: none; */
+    border-radius: 10px;
+    cursor: pointer;
+}
+.examdate{
+    margin: 5px;
+    border: 1px solid rgb(0, 0, 0);
+}
+.holidays{
+    margin: 5px;
+    border: 1px solid rgb(0, 0, 0);
+}

@@ -1,0 +1,155 @@
+.allocate-room-card {
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.allocation-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .allocation-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.room-info, .student-selection {
+  flex: 1;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.room-info h3, .student-selection h3 {
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.detail-item {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.detail-label {
+  font-weight: 500;
+  color: #6c757d;
+  min-width: 120px;
+}
+
+.detail-value {
+  color: var(--dark-color);
+}
+
+.allocation-arrow {
+  font-size: 2rem;
+  color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+  .allocation-arrow {
+    transform: rotate(90deg);
+  }
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: var(--accent-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(72, 149, 239, 0.2);
+}
+
+.allocate-btn {
+  width: 100%;
+}
+
+.no-students {
+  text-align: center;
+  color: #6c757d;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 6px;
+}
+
+.alert {
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  animation: slideUp 0.3s ease-out;
+}
+
+.alert-success {
+  background-color: rgba(25, 135, 84, 0.1);
+  color: #198754;
+  border-left: 4px solid #198754;
+}
+
+.alert-danger {
+  background-color: rgba(220, 53, 69, 0.1);
+  color: #dc3545;
+  border-left: 4px solid #dc3545;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(67, 97, 238, 0.2);
+  border-top-color: var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+.error-message {
+  padding: 20px;
+  background: #fff3f3;
+  color: var(--danger-color);
+  border-radius: 6px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

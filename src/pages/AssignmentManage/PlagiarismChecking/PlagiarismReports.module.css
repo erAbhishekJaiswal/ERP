@@ -1,0 +1,251 @@
+/* PlagiarismReports.module.css */
+.container {
+    margin: 20px;
+    padding: 2rem;
+    width: 95%;
+    background-color: #dedede;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  }
+  
+  .header {
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .assignmentSelector {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    align-items: center;
+  }
+  
+  .assignmentSelector select {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    flex: 1;
+    max-width: 500px;
+  }
+  
+  .checkAllButton {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .reportsContainer {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .reportsList {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .reportsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  
+  .reportsTable th,
+  .reportsTable td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .reportsTable th {
+    font-weight: 500;
+    color: #34495e;
+  }
+  
+  .reportRow {
+    cursor: pointer;
+  }
+  
+  .reportRow:hover {
+    background: #f8f9fa;
+  }
+  
+  .reportRow.selected {
+    background: #e3f2fd;
+  }
+  
+  .similarity {
+    font-weight: 500;
+  }
+  
+  .similarity.flagged {
+    color: #e74c3c;
+  }
+  
+  .flaggedStatus {
+    color: #e74c3c;
+    font-weight: 500;
+  }
+  
+  .clearStatus {
+    color: #27ae60;
+    font-weight: 500;
+  }
+  
+  .viewButton {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .reportDetails {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .similaritySummary {
+    display: flex;
+    gap: 2rem;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+  }
+  
+  .similarityScore {
+    text-align: center;
+  }
+  
+  .similarityScore h4 {
+    margin: 0 0 0.5rem 0;
+    color: #7f8c8d;
+  }
+  
+  .scoreValue {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  
+  .scoreValue.flagged {
+    color: #e74c3c;
+  }
+  
+  .similarityBreakdown h4 {
+    margin: 0 0 0.5rem 0;
+    color: #7f8c8d;
+  }
+  
+  .sourceItem {
+    margin-bottom: 0.5rem;
+  }
+  
+  .sourceLink {
+    color: #3498db;
+    text-decoration: none;
+  }
+  
+  .sideBySideView {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  
+  .original,
+  .matched {
+    padding: 1rem;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    height: 300px;
+    overflow-y: auto;
+  }
+  
+  .original h4,
+  .matched h4 {
+    margin-top: 0;
+  }
+  
+  .contentPlaceholder {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7f8c8d;
+    text-align: center;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  .flagButton {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .downloadButton {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .integrationSection {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+  }
+  
+  .integrationOptions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .integrationCard {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .integrationCard h4 {
+    margin-top: 0;
+    color: #2c3e50;
+  }
+  
+  .integrationCard p {
+    color: #7f8c8d;
+    margin-bottom: 1.5rem;
+  }
+  
+  .connectButton {
+    background: #2ecc71;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }

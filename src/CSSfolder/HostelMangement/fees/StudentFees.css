@@ -1,0 +1,22 @@
+.student-info {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-label {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+.info-value {
+  font-weight: 600;
+  font-size: 1.1rem;
+}

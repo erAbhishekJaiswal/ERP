@@ -1,0 +1,565 @@
+/* Updated Student Dashboard CSS - More Responsive */
+:root {
+  --primary-color: #4361ee;
+  --secondary-color: #3f37c9;
+  --accent-color: #4cc9f0;
+  --success-color: #4CAF50;
+  --warning-color: #FFC107;
+  --danger-color: #F44336;
+  --light-color: #f8f9fa;
+  --dark-color: #212529;
+  --text-color: #495057;
+  --text-light: #6c757d;
+  --border-color: #e9ecef;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --hover-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --section-spacing: 1.5rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: #f5f7fb;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* Main Dashboard Container */
+.student-dashboard {
+  width: 95%;
+  max-width: 1800px;
+  margin: 1.5rem auto;
+  padding: 1.25rem;
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, 
+              rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, 
+              rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+/* Header Styles */
+.dashboard-header {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-bottom: var(--section-spacing);
+  box-shadow: var(--card-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  transform: rotate(30deg);
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.student-profile {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.avatar {
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.student-info h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  line-height: 1.2;
+}
+
+.student-info h1 span {
+  font-weight: 600;
+  display: inline-block;
+}
+
+.student-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  opacity: 0.9;
+}
+
+.divider {
+  opacity: 0.6;
+}
+
+/* Quick Stats */
+.quick-stats-container {
+  margin-bottom: var(--section-spacing);
+}
+
+.quick-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 1rem;
+}
+
+.dashboard-stat-card {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s ease;
+  min-height: 5.5rem;
+}
+
+.dashboard-stat-card:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: var(--hover-shadow);
+}
+
+.stat-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.stat-icon.assignment {
+  background-color: var(--primary-color);
+}
+
+.stat-icon.quiz {
+  background-color: #9c27b0;
+}
+
+.stat-icon.attendance {
+  background-color: var(--success-color);
+}
+
+.stat-icon.course {
+  background-color: #2196F3;
+}
+
+.stat-content h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: var(--dark-color);
+  line-height: 1;
+}
+
+.stat-content p {
+  font-size: 0.875rem;
+  color: var(--text-light);
+}
+
+/* Dashboard Content Layout */
+.dashboard-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--section-spacing);
+}
+
+.content-left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-spacing);
+}
+
+/* Section Common Styles */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.section-header h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--dark-color);
+}
+
+.view-all {
+  color: var(--primary-color);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.view-all:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+/* Modules Section */
+.modules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1rem;
+}
+
+.module-card {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: var(--text-color);
+  min-height: 11.25rem;
+}
+
+.module-card:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: var(--hover-shadow);
+}
+
+.module-icon {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.module-card.assignment .module-icon {
+  color: var(--primary-color);
+}
+
+.module-card.attendance .module-icon {
+  color: var(--success-color);
+}
+
+.module-card.ecourse .module-icon {
+  color: #2196F3;
+}
+
+.module-card.quiz .module-icon {
+  color: #9c27b0;
+}
+
+.module-content h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--dark-color);
+}
+
+.module-content p {
+  font-size: 0.875rem;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+}
+
+.module-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.progress-circle {
+  width: 4.375rem;
+  height: 4.375rem;
+  margin-left: auto;
+  margin-top: auto;
+}
+
+/* Courses Section */
+.courses-list {
+  background: white;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+.course-item {
+  padding: 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.2s;
+}
+
+.course-item:last-child {
+  border-bottom: none;
+}
+
+.course-item:hover {
+  background-color: var(--light-color);
+}
+
+.course-info h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--dark-color);
+  margin-bottom: 0.25rem;
+}
+
+.course-info p {
+  font-size: 0.875rem;
+  color: var(--text-light);
+}
+
+/* Activity Section */
+.activity-section {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: var(--card-shadow);
+}
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.activity-item:hover {
+  background-color: var(--light-color);
+}
+
+.activity-icon {
+  font-size: 1.125rem;
+  padding: 0.625rem;
+  border-radius: 50%;
+  background-color: rgba(67, 97, 238, 0.1);
+  color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.activity-item.assignment .activity-icon {
+  background-color: rgba(67, 97, 238, 0.1);
+  color: var(--primary-color);
+}
+
+.activity-item.attendance .activity-icon {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: var(--success-color);
+}
+
+.activity-item.quiz .activity-icon {
+  background-color: rgba(156, 39, 176, 0.1);
+  color: #9c27b0;
+}
+
+.activity-content p {
+  font-size: 0.9375rem;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.activity-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+
+.time-icon {
+  font-size: 0.75rem;
+}
+
+/* Performance Section */
+.performance-section {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: var(--card-shadow);
+}
+
+.performance-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.performance-metric {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.metric-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: rgba(67, 97, 238, 0.1);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.metric-content h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-light);
+  margin-bottom: 0.25rem;
+}
+
+.grade, .rank {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--dark-color);
+}
+
+.change {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.change.positive {
+  color: var(--success-color);
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+  .dashboard-content {
+    grid-template-columns: 2fr 1fr;
+  }
+  
+  .header-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .quick-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .student-dashboard {
+    padding: 2rem;
+  }
+  
+  .dashboard-header {
+    padding: 2rem;
+  }
+  
+  .student-info h1 {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .student-dashboard {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    padding: 1rem;
+  }
+  
+  .dashboard-header {
+    border-radius: 0;
+    margin: -1rem -1rem 1rem -1rem;
+  }
+  
+  /* .quick-stats {
+    grid-template-columns: 1fr 1fr;
+  } */
+  
+  .student-profile {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .avatar {
+    margin-bottom: 0.5rem;
+  }
+  
+  .student-meta {
+    justify-content: center;
+  }
+  
+  .dashboard-stat-card {
+    padding: 1rem;
+    min-height: auto;
+  }
+  
+  .stat-content h3 {
+    font-size: 1.25rem;
+  }
+}
+
+/* Accessibility Improvements */
+.module-card:focus,
+.dashboard-stat-card:focus,
+.activity-item:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Animation Enhancements */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.module-card,
+.dashboard-stat-card,
+.activity-section,
+.performance-section {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.module-card:nth-child(1) { animation-delay: 0.1s; }
+.module-card:nth-child(2) { animation-delay: 0.2s; }
+.module-card:nth-child(3) { animation-delay: 0.3s; }
+.module-card:nth-child(4) { animation-delay: 0.4s; }

@@ -1,0 +1,449 @@
+/* Assignments.css */
+
+/* Base Variables */
+:root {
+    --primary: #4361ee;
+    --primary-light: #4895ef;
+    --primary-dark: #3f37c9;
+    --success: #4cc9f0;
+    --warning: #f8961e;
+    --danger: #f72585;
+    --info: #43aa8b;
+    --light: #f8f9fa;
+    --dark: #212529;
+    --gray: #6c757d;
+    --light-gray: #e9ecef;
+    --white: #ffffff;
+    --black: #000000;
+  
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+  
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+    --shadow-inset: inset 0 2px 4px 0 rgba(0,0,0,0.05);
+  
+    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Base Styles */
+  .assignments-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--dark);
+  }
+  
+  .assignments-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .assignments-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin: 0;
+  }
+  
+  .view-controls {
+    display: flex;
+    gap: 0.75rem;
+    background: var(--light-gray);
+    border-radius: var(--radius-lg);
+    padding: 0.25rem;
+  }
+  
+  .view-btn {
+    padding: 0.5rem 1.25rem;
+    border: none;
+    background: transparent;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--gray);
+  }
+  
+  .view-btn.active {
+    background: var(--white);
+    color: var(--primary);
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .view-btn:hover:not(.active) {
+    color: var(--dark);
+  }
+  
+  /* Filters Section */
+  .filters-container {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .filter-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 0.5rem 1rem;
+    transition: var(--transition);
+  }
+  
+  .filter-group:hover {
+    box-shadow: var(--shadow-md);
+  }
+  
+  .filter-icon {
+    margin-right: 0.5rem;
+    color: var(--gray);
+    font-size: 1.1rem;
+  }
+  
+  .filter-group select {
+    appearance: none;
+    border: none;
+    background: transparent;
+    padding: 0.25rem 1.5rem 0.25rem 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--dark);
+    cursor: pointer;
+    min-width: 120px;
+  }
+  
+  .chevron-icon {
+    position: absolute;
+    right: 1rem;
+    pointer-events: none;
+    color: var(--gray);
+  }
+  
+  .calendar-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: var(--white);
+    border: none;
+    border-radius: var(--radius-lg);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+    color: var(--dark);
+  }
+  
+  .calendar-toggle:hover {
+    background: var(--primary-light);
+    color: var(--white);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .calendar-toggle svg {
+    font-size: 1.1rem;
+  }
+  
+  /* Calendar Popup */
+  .calendar-popup {
+    position: relative;
+    margin-bottom: 2rem;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: 1.5rem;
+    z-index: 10;
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .react-calendar {
+    width: 100%;
+    border: none;
+    font-family: inherit;
+  }
+  
+  .react-calendar__tile--now {
+    background: var(--light-gray);
+  }
+  
+  .react-calendar__tile--active {
+    background: var(--primary) !important;
+    color: white !important;
+  }
+  
+  .react-calendar__tile.has-assignment {
+    position: relative;
+  }
+  
+  .react-calendar__tile.has-assignment::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--primary);
+  }
+  
+  /* Assignments List */
+  .assignments-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    color: var(--gray);
+  }
+  
+  .assignment-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border-left: 4px solid var(--primary);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .assignment-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .assignment-card.pending {
+    border-left-color: var(--warning);
+  }
+  
+  .assignment-card.in-progress {
+    border-left-color: var(--primary);
+  }
+  
+  .assignment-card.not-started {
+    border-left-color: var(--gray);
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+  
+  .priority-indicator {
+    margin-right: 0.5rem;
+  }
+  
+  .high-priority {
+    color: var(--danger);
+  }
+  
+  .card-header h3 {
+    flex: 1;
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--dark);
+  }
+  
+  .status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-xl);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin-left: 0.75rem;
+  }
+  
+  .status-badge.pending {
+    background-color: rgba(248, 150, 30, 0.1);
+    color: var(--warning);
+  }
+  
+  .status-badge.in-progress {
+    background-color: rgba(67, 97, 238, 0.1);
+    color: var(--primary);
+  }
+  
+  .status-badge.not-started {
+    background-color: var(--light-gray);
+    color: var(--gray);
+  }
+  
+  .card-body {
+    flex: 1;
+    margin-bottom: 1.5rem;
+  }
+  
+  .course-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: var(--light-gray);
+    border-radius: var(--radius-xl);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: 0.75rem;
+  }
+  
+  .description {
+    color: var(--gray);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+  
+  .due-date {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--dark);
+    font-weight: 500;
+  }
+  
+  .due-date svg {
+    color: var(--gray);
+  }
+  
+  .card-actions {
+    display: flex;
+    gap: 0.75rem;
+  }
+  
+  .outline-btn {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid var(--light-gray);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--dark);
+  }
+  
+  .outline-btn:hover {
+    background: var(--light-gray);
+  }
+  
+  .primary-btn {
+    padding: 0.5rem 1rem;
+    background: var(--primary);
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--white);
+    flex: 1;
+  }
+  
+  .primary-btn:hover {
+    background: var(--primary-dark);
+  }
+  
+  /* Calendar View */
+  .calendar-view {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    color: var(--gray);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .assignments-container {
+      padding: 1.5rem 1rem;
+    }
+  
+    .assignments-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .view-controls {
+      width: 100%;
+      justify-content: space-between;
+    }
+  
+    .view-btn {
+      flex: 1;
+      text-align: center;
+    }
+  
+    .filters-container {
+      flex-direction: column;
+    }
+  
+    .filter-group, .calendar-toggle {
+      width: 100%;
+    }
+  
+    .assignments-list {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Animation for status badges */
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  .status-badge.pending {
+    animation: pulse 2s infinite;
+  }
+  
+  /* Hover effects */
+  .assignment-card {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .assignment-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 100%);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+  
+  .assignment-card:hover::after {
+    transform: translateX(100%);
+  }
+  
+  /* Focus states for accessibility */
+  button:focus, select:focus {
+    outline: 2px solid var(--primary-light);
+    outline-offset: 2px;
+  }

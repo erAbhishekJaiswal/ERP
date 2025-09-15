@@ -1,0 +1,298 @@
+/* .sidebar{
+    font-family: serif;
+    width: 20%;
+    background-color: #0d0d2b;
+    border-right:2px solid #b9b9bc;
+}
+.side-links {
+    list-style-type: none;
+    padding: 15px;
+    position: fixed;
+}
+li{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1rem;
+}
+.alist{
+    display: flex;
+    flex-direction: row;
+    padding: 8px;
+    justify-content: start;
+}
+.otherlist{
+    padding: 3px;
+}
+.ad-min{
+    display: flex;
+    flex-direction: row;
+}
+.arrow-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.student-list{
+    padding-left:10px;
+    margin-left: 15px;
+    list-style-type: square;
+}
+.faculty-list{
+    padding-left:10px;
+    margin-left: 15px;
+    list-style-type: square;
+}
+.attendence-list{
+    padding-left:10px;
+    margin-left: 15px;
+    list-style-type: square;
+}
+.assignment-list{
+    padding-left:10px;
+    margin-left: 15px;
+    list-style-type: square;
+}
+.subject-list{
+    padding-left:10px;
+    margin-left: 15px;
+    list-style-type: square;
+}
+.department-list{
+    padding-left:10px;
+    margin-left: 15px;
+    list-style-type: square;
+}
+.designation-list{
+    padding-left:10px;
+    margin-left: 15px;
+    list-style-type: square;
+}
+#adminacces{
+    padding-left:0px;
+    margin-left: 20px;
+    list-style-type: square;
+}
+.addmition-list{
+    padding-left:20px;
+    margin-left: 24px;
+    list-style-type: square;
+}
+.courses-list{
+    display: none;
+    padding-left:20px;
+    margin-left: 24px;
+    list-style-type: square;
+}
+
+ */
+
+
+
+
+
+
+
+
+
+
+/* 
+.sidebar {
+    font-family: serif;
+    width: 20%;
+    background-color: #0d0d2b;
+    border-right: 2px solid #b9b9bc;
+}
+
+.sidebar .side-links {
+    list-style-type: none;
+    padding: 15px;
+    position: fixed;
+    width: 18%;
+}
+
+.sidebar li {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+.sidebar .alist {
+    display: flex;
+    flex-direction: row;
+    padding: 8px;
+    justify-content: start;
+    align-items: center;
+}
+
+.sidebar .ad-min {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidebar .toggle-btn {
+    background: transparent;
+    color: white;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.sidebar svg {
+    margin-right: 8px;
+} */
+
+
+
+
+
+
+
+
+
+
+
+/* Sidebar.css - Updated with responsive styles */
+
+.sidebar {
+  position: fixed;
+  top: 60px;
+  left: -280px;
+  width: 280px;
+  height: calc(100vh - 60px);
+  background-color: #34495e;
+  color: white;
+  transition: left 0.3s ease, width 0.3s ease;
+  z-index: 999;
+  overflow-y: auto;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sidebar h2 {
+  margin: 0;
+  padding: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+}
+
+.sidebar-scrollable {
+  overflow-y: auto;
+  flex-grow: 1;
+  padding: 0 20px 20px 20px;
+}
+
+.sidebar-links {
+  list-style: none;
+  padding-left: 0;
+  margin: 5px 0;
+}
+
+.sidebar-links li {
+  padding: 10px 0;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.95rem;
+  display: block;
+  padding: 8px 10px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.sidebar-links a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+  padding-left: 15px;
+}
+
+/* Scrollbar styling */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.arrow-list {
+  padding: 15px 10px 10px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid gray;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.arrow-list:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.student-toggle-btn {
+  background: transparent;
+  color: white;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+  transition: transform 0.2s ease;
+}
+
+/* Desktop specific styles */
+@media (min-width: 1225px) {
+  .sidebar {
+    left: 0;
+    width: 20%;
+  }
+  
+  .sidebar:not(.open) {
+    width: 60px;
+  }
+  
+  .sidebar:not(.open) .sidebar-links a span,
+  .sidebar:not(.open) h2,
+  .sidebar:not(.open) .arrow-list span {
+    display: none;
+  }
+  
+  .sidebar:not(.open) .sidebar-links a {
+    padding: 10px 0;
+    text-align: center;
+  }
+  
+  .sidebar:not(.open) .sidebar-links li {
+    padding: 5px 0;
+  }
+  
+  .sidebar:not(.open) .student-toggle-btn {
+    margin-left: 0;
+    margin-right: auto;
+  }
+}

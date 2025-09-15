@@ -1,0 +1,309 @@
+:root {
+  --primary-color: #4361ee;
+  --primary-light: #4895ef;
+  --secondary-color: #3f37c9;
+  --accent-color: #f72585;
+  --success-color: #4cc9f0;
+  --warning-color: #f8961e;
+  --error-color: #f94144;
+  --dark-color: #14213d;
+  --light-color: #f8f9fa;
+  --gray-color: #adb5bd;
+  --light-gray: #e9ecef;
+  --border-color: #dee2e6;
+  --text-color: #212529;
+  --text-secondary: #495057;
+  --border-radius: 8px;
+  --border-radius-sm: 4px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+/* Base Container Styles */
+.timetable-container-outter-box {
+  background-color: white;
+  margin: 20px auto;
+  padding: 15px;
+  border-radius: var(--border-radius);
+  width: 95%;
+  max-width: 1200px;
+  box-shadow: var(--box-shadow);
+}
+
+.timetable-title {
+  color: var(--dark-color);
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Form Container */
+.timetable-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: var(--light-gray);
+  padding: 20px;
+  border-radius: var(--border-radius);
+}
+
+/* Form Grid Layout */
+.all-div-box {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+/* Form Input Styles */
+.timetable-form-div {
+  font-weight: 500;
+  color: var(--dark-color);
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.timetable-select-input,
+.timetable-form-input,
+.form-select,
+.day-salection-select,
+.sub-teacher-select,
+.time-input-box {
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  font-size: 0.95rem;
+  transition: var(--transition);
+  width: 100%;
+}
+
+.timetable-select-input:focus,
+.timetable-form-input:focus,
+.form-select:focus,
+.day-salection-select:focus,
+.sub-teacher-select:focus,
+.time-input-box:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+}
+
+.timetable-form-input[readonly] {
+  background-color: var(--light-gray);
+  cursor: not-allowed;
+}
+
+/* Day Table Section */
+.daytable-section {
+  width: 100%;
+  padding: 15px;
+  background-color: #f0f0f0;
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.date-table-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.day-salection-box {
+  width: 100%;
+}
+
+/* Time Slot Section */
+.time-slot-section {
+  width: 100%;
+  padding: 15px;
+  background-color: #e0e0e0;
+  border-radius: var(--border-radius-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.subject-teacher-section-box {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+.subject-box,
+.teacher-box {
+  width: 100%;
+}
+
+.start-end-time-box {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+.start-time-box,
+.end-time-box {
+  width: 100%;
+}
+
+/* Button Styles */
+.cancelbtn-box {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cancelbtn {
+  color: white;
+  background-color: var(--error-color);
+  border: none;
+  padding: 8px 12px;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: var(--transition);
+}
+
+.cancelbtn:hover {
+  background-color: #d73636;
+}
+
+.cancelbtn:disabled {
+  background-color: var(--gray-color);
+  cursor: not-allowed;
+}
+
+.newadd-slot-btn,
+.newadd-day-btn,
+.submit-btn {
+  width: 100%;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.newadd-slot-btn:hover,
+.newadd-day-btn:hover {
+  background-color: var(--secondary-color);
+}
+
+.submit-btn {
+  background-color: var(--success-color);
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background-color: #3aa8d8;
+}
+
+.form-actions-box {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.created-by-section {
+  margin-top: 10px;
+}
+
+.read-only-input {
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  background-color: var(--light-gray);
+  width: 100%;
+  font-size: 0.95rem;
+}
+
+/* Responsive Breakpoints */
+@media (min-width: 576px) {
+  .all-div-box {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .subject-teacher-section-box {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .start-end-time-box {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .timetable-container-outter-box {
+    padding: 20px;
+  }
+  
+  .all-div-box {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .date-table-box {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 20px;
+  }
+  
+  .day-salection-box {
+    width: 70%;
+  }
+  
+  .cancelbtn-box {
+    width: 30%;
+  }
+}
+
+@media (min-width: 992px) {
+  .timetable-container-outter-box {
+    padding: 25px;
+  }
+  
+  .timetable-title {
+    font-size: 1.75rem;
+  }
+  
+  .newadd-slot-btn,
+  .newadd-day-btn,
+  .submit-btn {
+    padding: 12px 20px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .timetable-container-outter-box {
+    box-shadow: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .cancelbtn,
+  .newadd-slot-btn,
+  .newadd-day-btn {
+    display: none;
+  }
+  
+  .daytable-section {
+    page-break-inside: avoid;
+    margin-bottom: 20px;
+  }
+}

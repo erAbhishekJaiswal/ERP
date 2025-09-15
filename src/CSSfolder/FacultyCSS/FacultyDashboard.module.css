@@ -1,0 +1,317 @@
+/* Base Styles */
+.dashboard {
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    color: #333;
+    width: 95%; */
+    margin: 20px;
+    padding: 2rem;
+    width: 95%;
+    background-color: #dedede;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    /* background-color: #3f51b5; */
+    /* color: white; */
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+  }
+  
+  .header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  .headerActions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .notificationBadge {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .bellIcon {
+    font-size: 1.2rem;
+  }
+  
+  .badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #ff4081;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+  }
+  
+  .profileButton {
+    background-color: white;
+    color: #3f51b5;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  /* Tabs */
+  .tabs {
+    display: flex;
+    background-color: white;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .tab {
+    padding: 1rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    color: #666;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+  
+  .tab.active {
+    color: #3f51b5;
+    border-bottom-color: #3f51b5;
+  }
+  
+  /* Content */
+  .content {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Courses Tab */
+  .coursesContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .courseGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .courseCard {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .courseStats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  
+  .courseStats div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .highlight {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #3f51b5;
+  }
+  
+  .actionButton {
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: auto;
+  }
+  
+  .performanceSection {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .chartPlaceholder {
+    height: 300px;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    border-radius: 4px;
+    margin-top: 1rem;
+  }
+  
+  /* Grades Tab */
+  .gradesContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .gradeActions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  
+  .searchInput {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    flex-grow: 1;
+    max-width: 400px;
+  }
+  
+  .primaryButton {
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .gradesTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .gradesTable th, .gradesTable td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .gradesTable th {
+    background-color: #f5f5f5;
+    font-weight: 500;
+  }
+  
+  .status {
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+  }
+  
+  .status.graded {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+  }
+  
+  .status.pending {
+    background-color: #fff8e1;
+    color: #ff8f00;
+  }
+  
+  .smallButton {
+    background-color: #f5f5f5;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+  }
+  
+  /* Schedule Tab */
+  .scheduleContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .scheduleGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .scheduleCard {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .scheduleHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .scheduleHeader h3 {
+    margin: 0;
+    color: #3f51b5;
+  }
+  
+  .time {
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  .courseName {
+    font-weight: 500;
+    margin: 0.5rem 0;
+  }
+  
+  .location {
+    color: #666;
+    margin: 0.5rem 0;
+  }
+  
+  .scheduleActions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem;
+    }
+    
+    .headerActions {
+      width: 100%;
+      justify-content: space-between;
+    }
+    
+    .tabs {
+      overflow-x: auto;
+    }
+    
+    .content {
+      padding: 1rem;
+    }
+  }
