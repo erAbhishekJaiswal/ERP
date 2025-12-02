@@ -1,8 +1,21 @@
+
 import '../CSSfolder/home.css';
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { FiArrowRight, FiCheckCircle, FiAward, FiUsers, FiBook, FiClock, FiBarChart2 } from 'react-icons/fi';
+import { 
+  FiArrowRight, 
+  FiCheckCircle, 
+  FiAward, 
+  FiUsers, 
+  FiBook, 
+  FiClock, 
+  FiBarChart2,
+  FiPlay,
+  FiStar,
+  FiChevronRight,
+  FiChevronLeft
+} from 'react-icons/fi';
 import attendance from '../assets/images/attendance.png';
 import course from '../assets/images/course.png';
 import faculty from '../assets/images/university.png';
@@ -11,300 +24,376 @@ import library from '../assets/images/bookshelf.png';
 import exam from '../assets/images/checklist.png';
 
 function Home() {
-  const [users, setUsers] = useState([]);
-  const token = localStorage.getItem('token');
   const navigate = useNavigate();
+  const [activeBenefit, setActiveBenefit] = useState(0);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+    
+    const interval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    
+    return () => clearInterval(interval);
+  }, []);
+
+  const benefits = [
+    {
+      icon: <FiBarChart2 className="benefit-tab__icon" />,
+      title: "Operational Efficiency",
+      content: [
+        "Reduce paperwork and manual processes by up to 70% with our automated workflows and digital forms.",
+        "Institutions report 30% reduction in operational costs through optimized resource allocation.",
+        "Stay compliant with education regulations and accreditation requirements."
+      ]
+    },
+    {
+      icon: <FiUsers className="benefit-tab__icon" />,
+      title: "Student Success",
+      content: [
+        "Comprehensive student lifecycle management from admission to alumni relations.",
+        "Early alert systems to identify and support at-risk students.",
+        "Mobile-friendly interface for seamless student experience."
+      ]
+    },
+    {
+      icon: <FiAward className="benefit-tab__icon" />,
+      title: "Data-Driven Decisions",
+      content: [
+        "Real-time analytics dashboard for institutional insights.",
+        "Advanced reporting tools for curriculum assessment.",
+        "Predictive analytics for enrollment and retention strategies."
+      ]
+    }
+  ];
+
+  const testimonials = [
+    {
+      quote: "AcademicERP transformed how we manage our university. The student portal alone reduced administrative queries by 40%. The analytics dashboard gives us real-time insights we never had before.",
+      author: "Er. Abhishek Jaiswal",
+      title: "Student & Developer",
+      org: "Ashoka Institute of Technology & Management Varanasi",
+      avatar: "https://avatars.githubusercontent.com/u/169516698?v=4",
+      rating: 5
+    },
+    {
+      quote: "The implementation was seamless and the support team was exceptional. Our faculty now spends more time teaching and less time on administrative tasks.",
+      author: "Dr. Sarah Johnson",
+      title: "Academic Dean",
+      org: "Tech University",
+      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      rating: 5
+    },
+    {
+      quote: "Since adopting AcademicERP, we've seen a 25% improvement in student retention rates. The data insights helped us identify key areas for improvement.",
+      author: "Prof. Michael Chen",
+      title: "Department Chair",
+      org: "Metropolitan College",
+      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      rating: 4
+    }
+  ];
+
+  const features = [
+    {
+      icon: grduationhat,
+      title: "Student Lifecycle Management",
+      description: "From admission to alumni relations, track and manage the complete student journey with our comprehensive tools.",
+      items: ["Online admissions", "Registration & enrollment", "Academic progress tracking", "Graduation management"]
+    },
+    {
+      icon: faculty,
+      title: "Faculty & HR Management",
+      description: "Efficient systems for faculty scheduling, performance tracking, and resource allocation.",
+      items: ["Workload management", "Performance evaluation", "Payroll integration", "Professional development"]
+    },
+    {
+      icon: course,
+      title: "Curriculum Management",
+      description: "Design, deliver, and assess curriculum with our powerful course management tools.",
+      items: ["Course catalog management", "Syllabus creation", "Program assessment", "Accreditation support"]
+    },
+    {
+      icon: attendance,
+      title: "Attendance & Engagement",
+      description: "Monitor student participation and identify at-risk students with our engagement tools.",
+      items: ["Biometric integration", "Mobile check-in", "Early alert system", "Parent notifications"]
+    },
+    {
+      icon: exam,
+      title: "Assessment & Examinations",
+      description: "Complete exam scheduling, grading, and result processing solutions.",
+      items: ["Online exam creation", "Automated grading", "Plagiarism detection", "Analytics dashboard"]
+    },
+    {
+      icon: library,
+      title: "Learning Resources",
+      description: "Manage physical and digital resources with our integrated library system.",
+      items: ["Digital repository", "Circulation management", "E-resource access", "Research support"]
+    }
+  ];
+
+  const stats = [
+    { icon: <FiUsers className="stats-card__icon" />, number: "100+", label: "Students Empowered" },
+    { icon: <FiBook className="stats-card__icon" />, number: "50+", label: "Courses Offered" },
+    { icon: <FiAward className="stats-card__icon" />, number: "95%", label: "Satisfaction Rate" },
+    { icon: <FiClock className="stats-card__icon" />, number: "24/7", label: "System Availability" }
+  ];
 
   return (
-    <div className="home-container">
+    <div className={`home-page ${isVisible ? 'home-page--visible' : ''}`}>
       {/* Hero Section */}
-      <section >
-        <div className="hero-section" ></div>
-        <div className="home-hero-content">
-          <h1 className="hero-title">Transforming Education Through Technology</h1>
-          <p className="hero-subtitle">Our Academic ERP System streamlines campus operations and enhances learning experiences</p>
-          <div className="hero-buttons">
-            <button className="primary-button" onClick={() => navigate('/login')}>
-              Get Started <FiArrowRight />
-            </button>
-            <button className="secondary-button" onClick={() => navigate('/features')}>
-              Explore Features
-            </button>
+      <section className="home-hero">
+        <div className="home-hero__background">
+          <div className="home-hero__overlay"></div>
+        </div>
+        <div className="home-hero__content">
+          <div className="home-hero__text">
+            <h1 className="home-hero__title">
+              Transforming Education Through 
+              <span className="home-hero__title--highlight"> Technology</span>
+            </h1>
+            <p className="home-hero__subtitle">
+              Our Academic ERP System streamlines campus operations and enhances learning experiences for institutions of all sizes
+            </p>
+            <div className="home-hero__actions">
+              <button 
+                className="home-hero__button home-hero__button--primary" 
+                onClick={() => navigate('/login')}
+              >
+                Get Started <FiArrowRight className="home-hero__button-icon" />
+              </button>
+              <button 
+                className="home-hero__button home-hero__button--secondary"
+                onClick={() => navigate('/features')}
+              >
+                <FiPlay className="home-hero__button-icon" />
+                Watch Demo
+              </button>
+            </div>
+          </div>
+          <div className="home-hero__visual">
+            <div className="home-hero__dashboard-preview">
+              <img 
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                alt="ERP System Dashboard" 
+                className="home-hero__dashboard-image"
+              />
+            </div>
           </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="stats-section">
-        <div className="stats-container">
-          <div className="stat-item">
-            <FiUsers className="stat-icon" />
-            <div className="stat-number">10,000+</div>
-            <div className="stat-label">Students Empowered</div>
-          </div>
-          <div className="stat-item">
-            <FiBook className="stat-icon" />
-            <div className="stat-number">500+</div>
-            <div className="stat-label">Courses Offered</div>
-          </div>
-          <div className="stat-item">
-            <FiAward className="stat-icon" />
-            <div className="stat-number">95%</div>
-            <div className="stat-label">Satisfaction Rate</div>
-          </div>
-          <div className="stat-item">
-            <FiClock className="stat-icon" />
-            <div className="stat-number">24/7</div>
-            <div className="stat-label">System Availability</div>
-          </div>
+      <section className="home-stats">
+        <div className="home-stats__container">
+          {stats.map((stat, index) => (
+            <div key={index} className="home-stats__card">
+              {stat.icon}
+              <div className="home-stats__number">{stat.number}</div>
+              <div className="home-stats__label">{stat.label}</div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* About ERP Section */}
-      <section className="about-erp-section">
-        <div className="section-container">
-          <div className="erp-content">
-            <h2 className="section-title">About AcademicERP System</h2>
-            <div className="section-divider"></div>
-            <p className="erp-description">
+      {/* About Section */}
+      <section className="home-about">
+        <div className="home-about__container">
+          <div className="home-about__content">
+            <h2 className="home-about__title">
+              About <span className="home-about__title--accent">AcademicERP</span> System
+            </h2>
+            <div className="home-about__divider"></div>
+            <p className="home-about__description">
               AcademicERP is a comprehensive Enterprise Resource Planning system designed specifically for educational institutions. 
               Our platform integrates all academic and administrative functions into a unified system, providing real-time data access, 
               streamlined workflows, and powerful analytics to drive institutional success.
             </p>
-            <div className="erp-features">
-              <div className="feature-item">
-                <FiCheckCircle className="feature-icon" />
-                <span>Centralized data management</span>
-              </div>
-              <div className="feature-item">
-                <FiCheckCircle className="feature-icon" />
-                <span>Automated administrative processes</span>
-              </div>
-              <div className="feature-item">
-                <FiCheckCircle className="feature-icon" />
-                <span>Mobile-friendly interface</span>
-              </div>
-              <div className="feature-item">
-                <FiCheckCircle className="feature-icon" />
-                <span>Advanced reporting tools</span>
-              </div>
-              <div className="feature-item">
-                <FiCheckCircle className="feature-icon" />
-                <span>Secure cloud-based infrastructure</span>
-              </div>
-              <div className="feature-item">
-                <FiCheckCircle className="feature-icon" />
-                <span>Customizable modules</span>
-              </div>
+            <div className="home-about__features">
+              {[
+                "Centralized data management",
+                "Automated administrative processes",
+                "Mobile-friendly interface",
+                "Advanced reporting tools",
+                "Secure cloud-based infrastructure",
+                "Customizable modules"
+              ].map((feature, index) => (
+                <div key={index} className="home-about__feature-item">
+                  <FiCheckCircle className="home-about__feature-icon" />
+                  <span>{feature}</span>
+                </div>
+              ))}
             </div>
           </div>
-          <div className="erp-image">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="ERP System Dashboard" />
+          <div className="home-about__visual">
+            <div className="home-about__image-container">
+              <img 
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                alt="ERP System Interface" 
+                className="home-about__image"
+              />
+              <div className="home-about__image-overlay"></div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="features-section">
-        <div className="section-container">
-          <h2 className="section-title">Comprehensive ERP Modules</h2>
-          <div className="section-divider"></div>
-          <p className="section-subtitle">Tailored solutions for every aspect of academic management</p>
+      <section className="home-features">
+        <div className="home-features__container">
+          <div className="home-features__header">
+            <h2 className="home-features__title">Comprehensive ERP Modules</h2>
+            <div className="home-features__divider"></div>
+            <p className="home-features__subtitle">
+              Tailored solutions for every aspect of academic management
+            </p>
+          </div>
           
-          <div className="features-grid">
-            <div className="feature-card">
-              <div className="feature-icon">
-                <img src={grduationhat} alt="Student Management" />
+          <div className="home-features__grid">
+            {features.map((feature, index) => (
+              <div key={index} className="home-features__card">
+                <div className="home-features__card-icon">
+                  <img src={feature.icon} alt={feature.title} />
+                </div>
+                <h3 className="home-features__card-title">{feature.title}</h3>
+                <p className="home-features__card-description">{feature.description}</p>
+                <ul className="home-features__card-list">
+                  {feature.items.map((item, itemIndex) => (
+                    <li key={itemIndex} className="home-features__card-item">
+                      <FiChevronRight className="home-features__card-bullet" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <h3 className="feature-title">Student Lifecycle Management</h3>
-              <p className="feature-description">
-                From admission to alumni relations, track and manage the complete student journey with our comprehensive tools.
-              </p>
-              <ul className="feature-list">
-                <li>Online admissions</li>
-                <li>Registration & enrollment</li>
-                <li>Academic progress tracking</li>
-                <li>Graduation management</li>
-              </ul>
-            </div>
-            
-            <div className="feature-card">
-              <div className="feature-icon">
-                <img src={faculty} alt="Faculty Management" />
-              </div>
-              <h3 className="feature-title">Faculty & HR Management</h3>
-              <p className="feature-description">
-                Efficient systems for faculty scheduling, performance tracking, and resource allocation.
-              </p>
-              <ul className="feature-list">
-                <li>Workload management</li>
-                <li>Performance evaluation</li>
-                <li>Payroll integration</li>
-                <li>Professional development</li>
-              </ul>
-            </div>
-            
-            <div className="feature-card">
-              <div className="feature-icon">
-                <img src={course} alt="Course Management" />
-              </div>
-              <h3 className="feature-title">Curriculum Management</h3>
-              <p className="feature-description">
-                Design, deliver, and assess curriculum with our powerful course management tools.
-              </p>
-              <ul className="feature-list">
-                <li>Course catalog management</li>
-                <li>Syllabus creation</li>
-                <li>Program assessment</li>
-                <li>Accreditation support</li>
-              </ul>
-            </div>
-            
-            <div className="feature-card">
-              <div className="feature-icon">
-                <img src={attendance} alt="Attendance Tracking" />
-              </div>
-              <h3 className="feature-title">Attendance & Engagement</h3>
-              <p className="feature-description">
-                Monitor student participation and identify at-risk students with our engagement tools.
-              </p>
-              <ul className="feature-list">
-                <li>Biometric integration</li>
-                <li>Mobile check-in</li>
-                <li>Early alert system</li>
-                <li>Parent notifications</li>
-              </ul>
-            </div>
-            
-            <div className="feature-card">
-              <div className="feature-icon">
-                <img src={exam} alt="Examination Management" />
-              </div>
-              <h3 className="feature-title">Assessment & Examinations</h3>
-              <p className="feature-description">
-                Complete exam scheduling, grading, and result processing solutions.
-              </p>
-              <ul className="feature-list">
-                <li>Online exam creation</li>
-                <li>Automated grading</li>
-                <li>Plagiarism detection</li>
-                <li>Analytics dashboard</li>
-              </ul>
-            </div>
-            
-            <div className="feature-card">
-              <div className="feature-icon">
-                <img src={library} alt="Library Management" />
-              </div>
-              <h3 className="feature-title">Learning Resources</h3>
-              <p className="feature-description">
-                Manage physical and digital resources with our integrated library system.
-              </p>
-              <ul className="feature-list">
-                <li>Digital repository</li>
-                <li>Circulation management</li>
-                <li>E-resource access</li>
-                <li>Research support</li>
-              </ul>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Benefits Section */}
-      <section className="benefits-section">
-        <div className="section-container">
-          <h2 className="section-title">Institutional Benefits</h2>
-          <div className="section-divider"></div>
-          
-          <div className="benefits-tabs">
-            <div className="benefit-tab active">
-              <FiBarChart2 className="tab-icon" />
-              <span>Operational Efficiency</span>
-            </div>
-            <div className="benefit-tab">
-              <FiUsers className="tab-icon" />
-              <span>Student Success</span>
-            </div>
-            <div className="benefit-tab">
-              <FiAward className="tab-icon" />
-              <span>Data-Driven Decisions</span>
-            </div>
+      <section className="home-benefits">
+        <div className="home-benefits__container">
+          <div className="home-benefits__header">
+            <h2 className="home-benefits__title">Institutional Benefits</h2>
+            <div className="home-benefits__divider"></div>
           </div>
           
-          <div className="benefits-content">
-            <div className="benefit-item">
-              <h3>Streamlined Administrative Processes</h3>
-              <p>
-                Reduce paperwork and manual processes by up to 70% with our automated workflows and digital forms. 
-                Our system integrates all departments into a single platform, eliminating data silos and redundant data entry.
-              </p>
-            </div>
-            <div className="benefit-item">
-              <h3>Cost Savings</h3>
-              <p>
-                Institutions using AcademicERP report an average of 30% reduction in operational costs through 
-                optimized resource allocation, reduced printing costs, and improved staff productivity.
-              </p>
-            </div>
-            <div className="benefit-item">
-              <h3>Regulatory Compliance</h3>
-              <p>
-                Stay compliant with education regulations and accreditation requirements with our built-in compliance 
-                tracking and automated reporting tools that generate the documentation you need.
-              </p>
+          <div className="home-benefits__tabs">
+            {benefits.map((benefit, index) => (
+              <button
+                key={index}
+                className={`home-benefits__tab ${activeBenefit === index ? 'home-benefits__tab--active' : ''}`}
+                onClick={() => setActiveBenefit(index)}
+              >
+                {benefit.icon}
+                <span>{benefit.title}</span>
+              </button>
+            ))}
+          </div>
+          
+          <div className="home-benefits__content">
+            <div className="home-benefits__slide">
+              <h3 className="home-benefits__slide-title">{benefits[activeBenefit].title}</h3>
+              <div className="home-benefits__slide-items">
+                {benefits[activeBenefit].content.map((point, pointIndex) => (
+                  <div key={pointIndex} className="home-benefits__slide-item">
+                    <FiCheckCircle className="home-benefits__slide-icon" />
+                    <p>{point}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="testimonials-section">
-        <div className="section-container">
-          <h2 className="section-title">Trusted by Leading Institutions</h2>
-          <div className="section-divider"></div>
+      <section className="home-testimonials">
+        <div className="home-testimonials__container">
+          <div className="home-testimonials__header">
+            <h2 className="home-testimonials__title">Trusted by Leading Institutions</h2>
+            <div className="home-testimonials__divider"></div>
+          </div>
           
-          <div className="testimonials-grid">
-            <div className="testimonial-card">
-              <div className="testimonial-quote">
-                "AcademicERP transformed how we manage our university. The student portal alone reduced administrative queries by 40%.", 
-                "The analytics dashboard gives us real-time insights we never had before. We can now make data-driven decisions about curriculum."
-              </div>
-              <div className="testimonial-author">
-                <img src="https://avatars.githubusercontent.com/u/169516698?v=4" alt="Er. Abhishek Jaiswal" />
-                <div className="author-info">
-                  <div className="author-name">Er. Abhishek Jaiswal</div>
-                  <div className="author-title">Student & Developer, Collage of Engineering</div>
-                  <div className="author-org">Ashoka Institute of Technology & Management Varanasi</div>
+          <div className="home-testimonials__carousel">
+            <button 
+              className="home-testimonials__nav home-testimonials__nav--prev"
+              onClick={() => setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
+            >
+              <FiChevronLeft />
+            </button>
+            
+            <div className="home-testimonials__slide">
+              <div className="home-testimonials__card">
+                <div className="home-testimonials__quote">
+                  "{testimonials[currentTestimonial].quote}"
+                </div>
+                <div className="home-testimonials__rating">
+                  {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
+                    <FiStar key={i} className="home-testimonials__star" />
+                  ))}
+                </div>
+                <div className="home-testimonials__author">
+                  <img 
+                    src={testimonials[currentTestimonial].avatar} 
+                    alt={testimonials[currentTestimonial].author}
+                    className="home-testimonials__avatar" 
+                  />
+                  <div className="home-testimonials__author-info">
+                    <div className="home-testimonials__author-name">
+                      {testimonials[currentTestimonial].author}
+                    </div>
+                    <div className="home-testimonials__author-title">
+                      {testimonials[currentTestimonial].title}
+                    </div>
+                    <div className="home-testimonials__author-org">
+                      {testimonials[currentTestimonial].org}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
             
-            {/* <div className="testimonial-card">
-              <div className="testimonial-quote">
-                "The analytics dashboard gives us real-time insights we never had before. We can now make data-driven decisions about curriculum."
-              </div>
-              <div className="testimonial-author">
-                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Prof. Michael Chen" />
-                <div className="author-info">
-                  <div className="author-name">Prof. Michael Chen</div>
-                  <div className="author-title">Department Chair</div>
-                  <div className="author-org">Metropolitan College</div>
-                </div>
-              </div>
-            </div> */}
+            <button 
+              className="home-testimonials__nav home-testimonials__nav--next"
+              onClick={() => setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)}
+            >
+              <FiChevronRight />
+            </button>
+          </div>
+          
+          <div className="home-testimonials__indicators">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                className={`home-testimonials__indicator ${currentTestimonial === index ? 'home-testimonials__indicator--active' : ''}`}
+                onClick={() => setCurrentTestimonial(index)}
+              />
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="cta-section">
-        <div className="section-container">
-          <h2 className="cta-title">Ready to Transform Your Institution?</h2>
-          <p className="cta-subtitle">Schedule a demo today and see AcademicERP in action</p>
-          <div className="cta-buttons">
-            <button className="primary-button">Request Demo</button>
-            <button className="secondary-button">Contact Sales</button>
+      <section className="home-cta">
+        <div className="home-cta__container">
+          <div className="home-cta__content">
+            <h2 className="home-cta__title">Ready to Transform Your Institution?</h2>
+            <p className="home-cta__subtitle">
+              Join thousands of educational institutions already using AcademicERP
+            </p>
+            <div className="home-cta__actions">
+              <button className="home-cta__button home-cta__button--primary">
+                Request Demo
+              </button>
+              <button className="home-cta__button home-cta__button--secondary">
+                Contact Sales
+              </button>
+            </div>
           </div>
         </div>
       </section>

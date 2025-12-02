@@ -35,6 +35,7 @@ import AssignmentSubmission from "../AssignmentManage/AssignmentSubmission";
 import SubmissionsList from "../AssignmentManage/SubmissionsList";
 import Quiz from "../Student/Quiz";
 import StudentsQuiz from "../Student/StudentsQuiz";
+import AcademicCalendar from "./AcademicCalendar";
 
 
 
@@ -47,7 +48,7 @@ const FacultyPages = () => {
       <Route path="edit-facultyprofile" element={<EditFacultyprofile />} />
 
       <Route path="leave-request" element={<LeaveRequest />} />
-      <Route path='viewacadmic-calender' exact Component={ViewAcademicCalendar}/>
+      <Route path='viewacadmic-calender' element={<AcademicCalendar />}/>
 
       {/* <Route path="student-attendence" element={<StudentAttendence />} /> */}
 

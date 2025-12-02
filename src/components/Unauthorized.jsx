@@ -1,33 +1,3 @@
-// // Unauthorized.js
-// import { useNavigate } from 'react-router-dom';
-
-// const Unauthorized = () => {
-//   const navigate = useNavigate();
-//   const role = localStorage.getItem('role');
-
-//   return (
-//     <div className="unauthorized-container">
-//       <h1>403 - Unauthorized Access</h1>
-//       <p>You don't have permission to view this page.</p>
-//       <button onClick={() => navigate(-1)}>Go Back</button>
-//       <button onClick={() => navigate('/')}>Go to Home</button>
-//     </div>
-//   );
-// };
-
-// export default Unauthorized;
-
-
-
-
-
-
-
-
-
-
-
-
 import { useNavigate } from 'react-router-dom';
 import { FaArrowLeft, FaHome, FaLock } from 'react-icons/fa';
 import './Unauthorized.css'; // Create this CSS file

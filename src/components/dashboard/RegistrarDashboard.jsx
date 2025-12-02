@@ -1,37 +1,41 @@
-import React , { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   FiUsers, FiUser, FiBook, FiCalendar, FiClipboard, 
   FiFileText, FiHome, FiSettings, FiAward, FiClock,
-  FiLayers, FiBookmark, FiGrid, FiPieChart, FiPlus
+  FiLayers, FiBookmark, FiGrid, FiPieChart, FiPlus,
+  FiTrendingUp, FiActivity, FiRefreshCw
 } from 'react-icons/fi';
 import { FcDepartment } from "react-icons/fc";
-import { BsPeopleFill, BsBuilding, BsJournalBookmark } from 'react-icons/bs';
+import { BsPeopleFill, BsBuilding, BsJournalBookmark, BsArrowRight } from 'react-icons/bs';
 import { RiUserSettingsLine } from 'react-icons/ri';
 import "../../CSSfolder/AdminCSS/RegistrarDashboard.css"
 import apiClient from '../../services/axios';
 
 const RegistrarDashboard = () => {
   const [admindashboardData, setAdminDashboardData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [refresh, setRefresh] = useState(false);
   const adminId = localStorage.getItem('userid');
 
-  // Fetch dashboard data from API (mocked for now) 
-     const fetchDashboardData = async (adminId) => {
-      try {
-        // Replace with actual API call
-        const response = await apiClient.get(`/api/dashboard/admin/${adminId}`);
-        // const data = await response.json();
-        setAdminDashboardData(response.data);
-        console.log(response.data);
-        
-      } catch (error) {
-        console.error('Error fetching dashboard data:', error);
-      }
-    };
+  const fetchDashboardData = async (adminId) => {
+    try {
+      setLoading(true);
+      const response = await apiClient.get(`/api/dashboard/admin/${adminId}`);
+      setAdminDashboardData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error fetching dashboard data:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     fetchDashboardData(adminId);
-  }, [adminId]);
-  // Mock stats data - replace with actual API data
+  }, [adminId, refresh]);
+
+  // Stats data
   const stats = {
     totalStudents: admindashboardData?.studentCount || 0,
     totalFaculty: admindashboardData?.facultyCount || 0,
@@ -41,284 +45,371 @@ const RegistrarDashboard = () => {
     totalDesignations: admindashboardData?.designationCount || 0
   };
 
-  return (
-    <div className="registrar-dashboard">
-      {/* Sidebar Navigation */}
-      {/* <div className="sidebar">
-        <div className="sidebar-header">
-          <h2>Registrar Portal</h2>
+  // Quick actions data
+  const quickActions = [
+    {
+      title: "Register New Student",
+      icon: <FiUser />,
+      path: "/admin/newstudentregistration",
+      color: "#4f46e5",
+      description: "Add new student to the system"
+    },
+    {
+      title: "Register New Faculty",
+      icon: <FiUsers />,
+      path: "/admin/newfacultyregistration",
+      color: "#059669",
+      description: "Add new faculty member"
+    },
+    {
+      title: "Create New Exam",
+      icon: <FiFileText />,
+      path: "/admin/createexam",
+      color: "#dc2626",
+      description: "Schedule new examination"
+    },
+    {
+      title: "Create Timetable",
+      icon: <FiClock />,
+      path: "/admin/newtimetable",
+      color: "#7c3aed",
+      description: "Generate class schedule"
+    },
+    {
+      title: "Add New Subject",
+      icon: <BsJournalBookmark />,
+      path: "/admin/createsubject",
+      color: "#ea580c",
+      description: "Create new course subject"
+    },
+    {
+      title: "Academic Calendar",
+      icon: <FiCalendar />,
+      path: "/admin/createacadmiccalender",
+      color: "#0891b2",
+      description: "Set academic schedule"
+    },
+    {
+      title: "Attendance Create",
+      icon: <FiBook />,
+      path: "/admin/create-attendance",
+      color: "#65a30d",
+      description: "Manage attendance records"
+    }
+  ];
+
+  const handleRefresh = () => {
+    setRefresh(!refresh);
+  };
+
+  if (loading) {
+    return (
+      <div className="registrar-dashboard-loading">
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <h2>Loading Dashboard...</h2>
+          <p>Please wait while we fetch your data</p>
         </div>
-        <nav className="sidebar-nav">
-          <div className="nav-section">
-            <h3 className="nav-section-title">Core</h3>
-            <Link to="/registrar/dashboard" className="nav-link active">
-              <FiHome className="nav-icon" />
-              <span>Dashboard</span>
-            </Link>
-          </div>
+      </div>
+    );
+  }
 
-          <div className="nav-section">
-            <h3 className="nav-section-title">People Management</h3>
-            <Link to="/registrar/faculty-list" className="nav-link">
-              <FiUsers className="nav-icon" />
-              <span>Faculty List</span>
-            </Link>
-            <Link to="/registrar/student-list" className="nav-link">
-              <FiUser className="nav-icon" />
-              <span>Student List</span>
-            </Link>
-            <Link to="/registrar/user-list" className="nav-link">
-              <RiUserSettingsLine className="nav-icon" />
-              <span>User List</span>
-            </Link>
-            <Link to="/registrar/new-student" className="nav-link">
-              <FiPlus className="nav-icon" />
-              <span>New Student</span>
-            </Link>
-            <Link to="/registrar/new-faculty" className="nav-link">
-              <FiPlus className="nav-icon" />
-              <span>New Faculty</span>
-            </Link>
+  return (
+    <div className="registrar-dashboard-modern">
+      {/* Header Section */}
+      <div className="registrar-dashboard-modern-header">
+        <div className="header-content-wrapper">
+          <div className="header-text-content">
+            <h1 className="dashboard-main-title">
+              Registrar Dashboard
+            </h1>
+            <p className="dashboard-subtitle">
+              Manage your institution's academic operations efficiently
+            </p>
           </div>
-
-          <div className="nav-section">
-            <h3 className="nav-section-title">Academic Management</h3>
-            <Link to="/registrar/create-exam" className="nav-link">
-              <FiFileText className="nav-icon" />
-              <span>Create Exam</span>
-            </Link>
-            <Link to="/registrar/all-exams" className="nav-link">
-              <FiClipboard className="nav-icon" />
-              <span>All Exams</span>
-            </Link>
-            <Link to="/registrar/create-attendance" className="nav-link">
-              <FiCalendar className="nav-icon" />
-              <span>Attendance Create</span>
-            </Link>
-            <Link to="/registrar/create-timetable" className="nav-link">
-              <FiClock className="nav-icon" />
-              <span>Create Timetable</span>
-            </Link>
-            <Link to="/registrar/all-timetables" className="nav-link">
-              <FiGrid className="nav-icon" />
-              <span>All Timetables</span>
-            </Link>
-          </div>
-
-          <div className="nav-section">
-            <h3 className="nav-section-title">System Configuration</h3>
-            <Link to="/registrar/department-form" className="nav-link">
-              <BsBuilding className="nav-icon" />
-              <span>Department Form</span>
-            </Link>
-            <Link to="/registrar/department-list" className="nav-link">
-              <BsBuilding className="nav-icon" />
-              <span>Department List</span>
-            </Link>
-            <Link to="/registrar/designation-form" className="nav-link">
-              <FiAward className="nav-icon" />
-              <span>Designation Form</span>
-            </Link>
-            <Link to="/registrar/designation-list" className="nav-link">
-              <FiAward className="nav-icon" />
-              <span>Designation List</span>
-            </Link>
-            <Link to="/registrar/create-subject" className="nav-link">
-              <BsJournalBookmark className="nav-icon" />
-              <span>Create Subject</span>
-            </Link>
-            <Link to="/registrar/subject-list" className="nav-link">
-              <BsJournalBookmark className="nav-icon" />
-              <span>Subject List</span>
-            </Link>
-            <Link to="/registrar/course-form" className="nav-link">
-              <FiBook className="nav-icon" />
-              <span>Course Form</span>
-            </Link>
-            <Link to="/registrar/course-list" className="nav-link">
-              <FiBook className="nav-icon" />
-              <span>Course List</span>
-            </Link>
-          </div>
-
-          <div className="nav-section">
-            <h3 className="nav-section-title">Academic Calendar</h3>
-            <Link to="/registrar/create-calendar" className="nav-link">
-              <FiCalendar className="nav-icon" />
-              <span>Create Academic Calendar</span>
-            </Link>
-            <Link to="/registrar/view-calendar" className="nav-link">
-              <FiCalendar className="nav-icon" />
-              <span>View Academic Calendar</span>
-            </Link>
-          </div>
-        </nav>
-      </div> */}
-
-      {/* Main Content */}
-      <div className="main-content">
-        {/* Top Navigation */}
-        {/* <header className="top-nav">
-          <div className="search-bar">
-            <input type="text" placeholder="Search..." />
-          </div>
-          <div className="user-profile">
-            <div className="profile-info">
-              <span className="user-name">Registrar Admin</span>
-              <span className="user-role">Registrar</span>
-            </div>
-            <div className="profile-avatar">
-              <FiUser />
+          <div className="header-actions">
+            <button className="refresh-btn" onClick={handleRefresh}>
+              <FiRefreshCw className="refresh-icon" />
+              Refresh Data
+            </button>
+            <div className="date-display">
+              <FiCalendar className="date-icon" />
+              {new Date().toLocaleDateString('en-US', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+              })}
             </div>
           </div>
-        </header> */}
+        </div>
+      </div>
 
-        {/* Dashboard Content */}
-        <div className="admin-dashboard-content">
-          <h1 className="dashboard-title">Registrar Dashboard</h1>
-          
-          {/* Stats Cards */}
-          <div to={`/admin/allstudentlist`} className="admin-stats-container">
-            <Link  className="stat-card">
-              <div className="stat-icon students">
+      {/* Stats Overview */}
+      <div className="stats-overview-section">
+        <div className="section-header-modern">
+          <h2 className="section-title-modern">
+            <FiActivity className="section-title-icon" />
+            Overview Statistics
+          </h2>
+          <div className="stats-summary">
+            Total Records: {stats.totalStudents + stats.totalFaculty + stats.activeCourses}
+          </div>
+        </div>
+        
+        <div className="stats-grid-modern">
+          <Link to="/admin/allstudentlist" className="stat-card-modern student-stat">
+            <div className="stat-card-header">
+              <div className="stat-icon-modern">
                 <FiUser />
               </div>
-              <div className="stat-info">
-                <h3>Total Students</h3>
-                <p>{stats.totalStudents}</p>
+              <div className="stat-trend positive">
+                <FiTrendingUp />
+                +12%
               </div>
-            </Link>
-            
-            <Link to={`/admin/facultylist`} className="stat-card">
-              <div className="stat-icon faculty">
+            </div>
+            <div className="stat-content-modern">
+              <h3 className="stat-value">{stats.totalStudents}</h3>
+              <p className="stat-label">Total Students</p>
+              <div className="stat-progress">
+                <div className="progress-bar">
+                  <div 
+                    className="progress-fill" 
+                    style={{ width: `${Math.min((stats.totalStudents / 1000) * 100, 100)}%` }}
+                  ></div>
+                </div>
+                <span className="progress-text">
+                  {Math.min((stats.totalStudents / 1000) * 100, 100).toFixed(1)}% capacity
+                </span>
+              </div>
+            </div>
+            <div className="stat-arrow">
+              <BsArrowRight />
+            </div>
+          </Link>
+
+          <Link to="/admin/facultylist" className="stat-card-modern faculty-stat">
+            <div className="stat-card-header">
+              <div className="stat-icon-modern">
                 <FiUsers />
               </div>
-              <div className="stat-info">
-                <h3>Total Faculty</h3>
-                <p>{stats.totalFaculty}</p>
+              <div className="stat-trend positive">
+                <FiTrendingUp />
+                +8%
               </div>
-            </Link>
-            
-            <Link to={`/admin/courselist`} className="stat-card">
-              <div className="stat-icon courses">
+            </div>
+            <div className="stat-content-modern">
+              <h3 className="stat-value">{stats.totalFaculty}</h3>
+              <p className="stat-label">Total Faculty</p>
+              <div className="stat-progress">
+                <div className="progress-bar">
+                  <div 
+                    className="progress-fill" 
+                    style={{ width: `${Math.min((stats.totalFaculty / 200) * 100, 100)}%` }}
+                  ></div>
+                </div>
+                <span className="progress-text">
+                  {Math.min((stats.totalFaculty / 200) * 100, 100).toFixed(1)}% capacity
+                </span>
+              </div>
+            </div>
+            <div className="stat-arrow">
+              <BsArrowRight />
+            </div>
+          </Link>
+
+          <Link to="/admin/courselist" className="stat-card-modern course-stat">
+            <div className="stat-card-header">
+              <div className="stat-icon-modern">
                 <FiBook />
               </div>
-              <div className="stat-info">
-                <h3>Total Courses</h3>
-                <p>{stats.activeCourses}</p>
+              <div className="stat-trend neutral">
+                <FiTrendingUp />
+                +3%
               </div>
-            </Link>
+            </div>
+            <div className="stat-content-modern">
+              <h3 className="stat-value">{stats.activeCourses}</h3>
+              <p className="stat-label">Active Courses</p>
+              <div className="stat-progress">
+                <div className="progress-bar">
+                  <div 
+                    className="progress-fill" 
+                    style={{ width: `${Math.min((stats.activeCourses / 50) * 100, 100)}%` }}
+                  ></div>
+                </div>
+                <span className="progress-text">
+                  {Math.min((stats.activeCourses / 50) * 100, 100).toFixed(1)}% offered
+                </span>
+              </div>
+            </div>
+            <div className="stat-arrow">
+              <BsArrowRight />
+            </div>
+          </Link>
 
-            <Link to={`/admin/courselist`} className="stat-card">
-              <div className="stat-icon courses">
+          <Link to="/admin/courselist" className="stat-card-modern department-stat">
+            <div className="stat-card-header">
+              <div className="stat-icon-modern">
                 <FcDepartment />
               </div>
-              <div className="stat-info">
-                <h3>Total Department</h3>
-                <p>{stats.totalDepartments}</p>
+              <div className="stat-trend neutral">
+                <FiTrendingUp />
+                +0%
               </div>
-            </Link>
-            
-            <Link to={`/admin/allexams`} className="stat-card">
-              <div className="stat-icon exams">
+            </div>
+            <div className="stat-content-modern">
+              <h3 className="stat-value">{stats.totalDepartments}</h3>
+              <p className="stat-label">Total Departments</p>
+              <div className="stat-progress">
+                <div className="progress-bar">
+                  <div 
+                    className="progress-fill" 
+                    style={{ width: `${Math.min((stats.totalDepartments / 10) * 100, 100)}%` }}
+                  ></div>
+                </div>
+                <span className="progress-text">
+                  {Math.min((stats.totalDepartments / 10) * 100, 100).toFixed(1)}% utilization
+                </span>
+              </div>
+            </div>
+            <div className="stat-arrow">
+              <BsArrowRight />
+            </div>
+          </Link>
+
+          <Link to="/admin/allexams" className="stat-card-modern subject-stat">
+            <div className="stat-card-header">
+              <div className="stat-icon-modern">
                 <FiFileText />
               </div>
-              <div className="stat-info">
-                <h3>Total Subjects</h3>
-                <p>{stats.upcomingExams}</p>
+              <div className="stat-trend positive">
+                <FiTrendingUp />
+                +15%
               </div>
+            </div>
+            <div className="stat-content-modern">
+              <h3 className="stat-value">{stats.upcomingExams}</h3>
+              <p className="stat-label">Total Subjects</p>
+              <div className="stat-progress">
+                <div className="progress-bar">
+                  <div 
+                    className="progress-fill" 
+                    style={{ width: `${Math.min((stats.upcomingExams / 100) * 100, 100)}%` }}
+                  ></div>
+                </div>
+                <span className="progress-text">
+                  {Math.min((stats.upcomingExams / 100) * 100, 100).toFixed(1)}% available
+                </span>
+              </div>
+            </div>
+            <div className="stat-arrow">
+              <BsArrowRight />
+            </div>
+          </Link>
+
+          <div className="stat-card-modern summary-stat">
+            <div className="stat-card-header">
+              <div className="stat-icon-modern">
+                <FiPieChart />
+              </div>
+              <div className="stat-trend positive">
+                <FiTrendingUp />
+                +9%
+              </div>
+            </div>
+            <div className="stat-content-modern">
+              <h3 className="stat-value">
+                {stats.totalStudents + stats.totalFaculty}
+              </h3>
+              <p className="stat-label">Total Users</p>
+              <div className="user-breakdown">
+                <div className="breakdown-item">
+                  <span className="breakdown-label">Students</span>
+                  <span className="breakdown-value">{stats.totalStudents}</span>
+                </div>
+                <div className="breakdown-item">
+                  <span className="breakdown-label">Faculty</span>
+                  <span className="breakdown-value">{stats.totalFaculty}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Quick Actions */}
+      <div className="quick-actions-modern">
+        <div className="section-header-modern">
+          <h2 className="section-title-modern">
+            <FiGrid className="section-title-icon" />
+            Quick Actions
+          </h2>
+          <p className="section-description">
+            Frequently used administrative tasks
+          </p>
+        </div>
+        
+        <div className="actions-grid-modern">
+          {quickActions.map((action, index) => (
+            <Link 
+              to={action.path} 
+              className="action-card-modern" 
+              key={index}
+              style={{ '--accent-color': action.color }}
+            >
+              <div className="action-card-header">
+                <div 
+                  className="action-icon-modern" 
+                  style={{ backgroundColor: `${action.color}15`, color: action.color }}
+                >
+                  {action.icon}
+                </div>
+                <div className="action-badge">New</div>
+              </div>
+              
+              <div className="action-content-modern">
+                <h3 className="action-title">{action.title}</h3>
+                <p className="action-description">{action.description}</p>
+              </div>
+              
+              <div className="action-footer">
+                <span className="action-cta">
+                  Get Started
+                  <BsArrowRight className="cta-arrow" />
+                </span>
+              </div>
+              
+              <div className="action-hover-effect"></div>
             </Link>
-          </div>
+          ))}
+        </div>
+      </div>
 
-          {/* Quick Actions */}
-          <div className="registrar-quick-actions">
-            <h2 className="section-title">Quick Actions</h2>
-            <div className="actions-grid">
-              <Link to="/admin/newstudentregistration" className="action-card">
-                <FiUser className="action-icon" />
-                <span>Register New Student</span>
-              </Link>
-              
-              <Link to="/admin/newfacultyregistration" className="action-card">
-                <FiUsers className="action-icon" />
-                <span>Register New Faculty</span>
-              </Link>
-              
-              <Link to="/admin/createexam" className="action-card">
-                <FiFileText className="action-icon" />
-                <span>Create New Exam</span>
-              </Link>
-              
-              <Link to="/admin/newtimetable" className="action-card">
-                <FiClock className="action-icon" />
-                <span>Create Timetable</span>
-              </Link>
-              
-              <Link to="/admin/createsubject" className="action-card">
-                <BsJournalBookmark className="action-icon" />
-                <span>Add New Subject</span>
-              </Link>
-              
-              <Link to="/admin/createacadmiccalender" className="action-card">
-                <FiCalendar className="action-icon" />
-                <span>Create Academic Calendar</span>
-              </Link>
-
-
-              <Link to="/admin/create-attendance" className="action-card">
-                <FiBook className="action-icon" />
-                <span>Attendance Create</span>
-              </Link>
-
-              
+      {/* System Status */}
+      <div className="system-status-modern">
+        <div className="status-grid">
+          <div className="status-card online">
+            <div className="status-indicator"></div>
+            <div className="status-content">
+              <h3>System Status</h3>
+              <p>All systems operational</p>
             </div>
           </div>
-
-          {/* Recent Activities */}
-          {/* <div className="recent-activities">
-            <h2 className="section-title">Recent Activities</h2>
-            <div className="activities-list">
-              <div className="activity-item">
-                <div className="activity-icon">
-                  <FiUser />
-                </div>
-                <div className="activity-details">
-                  <p>New student registered - John Doe (CS2023001)</p>
-                  <span className="activity-time">10 minutes ago</span>
-                </div>
-              </div>
-              
-              <div className="activity-item">
-                <div className="activity-icon">
-                  <FiUsers />
-                </div>
-                <div className="activity-details">
-                  <p>New faculty added - Dr. Smith (Mathematics)</p>
-                  <span className="activity-time">2 hours ago</span>
-                </div>
-              </div>
-              
-              <div className="activity-item">
-                <div className="activity-icon">
-                  <FiFileText />
-                </div>
-                <div className="activity-details">
-                  <p>New exam created - Semester 5 Final Exams</p>
-                  <span className="activity-time">Yesterday</span>
-                </div>
-              </div>
-              
-              <div className="activity-item">
-                <div className="activity-icon">
-                  <FiCalendar />
-                </div>
-                <div className="activity-details">
-                  <p>Academic calendar updated for 2023-24</p>
-                  <span className="activity-time">2 days ago</span>
-                </div>
-              </div>
+          
+          <div className="status-card performance">
+            <div className="status-content">
+              <h3>Performance</h3>
+              <p>Excellent response time</p>
             </div>
-          </div> */}
+          </div>
+          
+          <div className="status-card updates">
+            <div className="status-content">
+              <h3>Last Updated</h3>
+              <p>{new Date().toLocaleTimeString()}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

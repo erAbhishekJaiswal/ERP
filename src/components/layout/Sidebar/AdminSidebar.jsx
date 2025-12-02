@@ -1,502 +1,252 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { FaUserCog, FaAngleRight } from "react-icons/fa";
-import { useState } from "react";
+
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { 
+  FaUserCog, 
+  FaAngleRight,
+  FaUsers,
+  FaCalendarAlt,
+  FaClipboardList,
+  FaBook,
+  FaUniversity,
+  FaUserTie,
+  FaChalkboardTeacher,
+  FaBed,
+  FaMoneyBillWave,
+  FaTools,
+  FaHome,
+  FaGraduationCap,
+  FaClock,
+  FaFileAlt
+} from "react-icons/fa";
 import "../../../CSSfolder/CommonCSS/sidebar.css";
 
-const AdminSidebar = () => {
-  const [admitionlist, setadmitionlist] = useState ("none")
-  const [adminlist, setAdminlist] = useState("block");
-  const [attendencelist, setattendencelist] = useState("none");
-  const [departmentlist, setdepartmentlist] = useState("none");
-  const [designationlist, setdesignationlist] = useState("none");
-  const [subjectlist, setsubjectlist] = useState("none");
-  const [courselist, setcourselist] = useState("none");
-  const [timetablelist, settimetablelist] = useState("none");
-  const [acadmicCalelist, setacadmicCalelist] = useState("none");
-  const [assignmentlist, setassignmentlist] = useState("none");
-  const [hostelroom, setHostelroom] = useState("none")
-  const [hostelfee, setHostelfee] = useState("none")
-  const [hostelmaintanence, setHostelmaintanence] = useState("none")
+const AdminSidebar = ({ expandedItems, toggleExpand, handleNavigation, currentPath}) => {
   const theme = localStorage.getItem("theme");
 
-  const Adminlistdisplay = () => {
-    setAdminlist(adminlist === "none" ? "block" : "none");
-  };
+  // Menu items data structure for better maintainability
+  const menuSections = [
+    {
+      id: 'admin-dashboard',
+      label: 'Admin Dashboard',
+      icon: <FaHome className="admin-sidebar__section-icon" />,
+      path: '/admin/registrardash',
+      items: [
+        { label: 'Faculty List', path: '/admin/facultylist', icon: <FaChalkboardTeacher /> },
+        { label: 'All Student List', path: '/admin/allstudentlist', icon: <FaUsers /> },
+        { label: 'User List', path: '/admin/userslist', icon: <FaUserTie /> },
+        { label: 'Create Exam', path: '/admin/createexam', icon: <FaFileAlt /> },
+        { label: 'All Exams', path: '/admin/allexams', icon: <FaClipboardList /> },
+        { label: 'Attendance Create', path: '/admin/create-attendance', icon: <FaClock /> }
+      ]
+    },
+    {
+      id: 'admission-management',
+      label: 'Admission Management',
+      icon: <FaGraduationCap className="admin-sidebar__section-icon" />,
+      items: [
+        { label: 'New Student Register', path: '/admin/newstudentregistration', icon: <FaUsers /> },
+        { label: 'New Faculty Register', path: '/admin/newfacultyregistration', icon: <FaUserTie /> }
+      ]
+    },
+    {
+      id: 'timetable',
+      label: 'Time Table Management',
+      icon: <FaClock className="admin-sidebar__section-icon" />,
+      items: [
+        { label: 'Create Timetable', path: '/admin/newtimetable', icon: <FaCalendarAlt /> },
+        { label: 'View All Timetables', path: '/admin/viewalltimetables', icon: <FaClipboardList /> }
+      ]
+    },
+    {
+      id: 'department-management',
+      label: 'Department Management',
+      icon: <FaUniversity className="admin-sidebar__section-icon" />,
+      items: [
+        { label: 'Department Form', path: '/admin/departmentform', icon: <FaFileAlt /> },
+        { label: 'Department List', path: '/admin/departmentlist', icon: <FaClipboardList /> }
+      ]
+    },
+    {
+      id: 'designation-management',
+      label: 'Designation Management',
+      icon: <FaUserTie className="admin-sidebar__section-icon" />,
+      items: [
+        { label: 'Designation Form', path: '/admin/designationform', icon: <FaFileAlt /> },
+        { label: 'Designation List', path: '/admin/designationlist', icon: <FaClipboardList /> }
+      ]
+    },
+    {
+      id: 'subject-management',
+      label: 'Subject Management',
+      icon: <FaBook className="admin-sidebar__section-icon" />,
+      items: [
+        { label: 'Create Subject', path: '/admin/createsubject', icon: <FaFileAlt /> },
+        { label: 'Subject List', path: '/admin/subjectslist', icon: <FaClipboardList /> }
+      ]
+    },
+    {
+      id: 'course-management',
+      label: 'Course Management',
+      icon: <FaGraduationCap className="admin-sidebar__section-icon" />,
+      items: [
+        { label: 'Course Form', path: '/admin/createcourse', icon: <FaFileAlt /> },
+        { label: 'Course List', path: '/admin/courselist', icon: <FaClipboardList /> }
+      ]
+    },
+    {
+      id: 'academic-calendar',
+      label: 'Academic Calendar',
+      icon: <FaCalendarAlt className="admin-sidebar__section-icon" />,
+      items: [
+        { label: 'Create Academic Calendar', path: '/admin/createacadmiccalender', icon: <FaFileAlt /> },
+        { label: 'View Academic Calendar', path: '/admin/viewacadmiccalender', icon: <FaClipboardList /> }
+      ]
+    },
+    {
+      id: 'hostel-rooms',
+      label: 'Hostel Rooms',
+      icon: <FaBed className="admin-sidebar__section-icon" />,
+      items: [
+        { label: 'Create Room', path: '/admin/createroom', icon: <FaFileAlt /> },
+        { label: 'Rooms List', path: '/admin/rooms', icon: <FaClipboardList /> },
+        { label: 'Update Room', path: '/admin/updateroom', icon: <FaTools /> },
+        { label: 'Allocate Room', path: '/admin/allocateroom', icon: <FaUserCog /> }
+      ]
+    },
+    {
+      id: 'hostel-fees',
+      label: 'Hostel Fees',
+      icon: <FaMoneyBillWave className="admin-sidebar__section-icon" />,
+      items: [
+        { label: 'Create Fee', path: '/admin/fee/create', icon: <FaFileAlt /> },
+        { label: 'Fee Report', path: '/admin/fee/duereport', icon: <FaClipboardList /> },
+        { label: 'Fee List', path: '/admin/fee/list', icon: <FaMoneyBillWave /> },
+        { label: 'Fee Student', path: '/admin/fee/student', icon: <FaUsers /> }
+      ]
+    },
+    {
+      id: 'hostel-maintenance',
+      label: 'Hostel Maintenance',
+      icon: <FaTools className="admin-sidebar__section-icon" />,
+      items: [
+        { label: 'Create Maintenance', path: '/admin/maintenance/create', icon: <FaFileAlt /> },
+        { label: 'Maintenance List', path: '/admin/maintenance/list', icon: <FaClipboardList /> }
+      ]
+    }
+  ];
 
-  const Attendencelistdisplay = () => {
-    setattendencelist(attendencelist === "none" ? "block" : "none");
-  };
-
-  const Departmentlistdisplay = () => {
-    setdepartmentlist(departmentlist === "none" ? "block" : "none");
-  };
-
-  const Designationlistdisplay = () => {
-    setdesignationlist(designationlist === "none" ? "block" : "none");
-  };
-
-  const Subjectlistdisplay = () => {
-    setsubjectlist(subjectlist === "none" ? "block" : "none");
-  };
-
-  const Courselistdisplay = () => {
-    setcourselist(courselist === "none" ? "block" : "none");
+  // const isSectionActive = (section) => {
+  //   if (section.path && currentPath === section.path) return true;
+  //   if (section.items) {
+  //     return section.items.some(item => currentPath.startsWith(item.path));
+  //   }
+  //   return false;
+  // };
+  const isSectionActive = (section) => {
+  if (section.path && currentPath?.startsWith(section.path)) return true;
+  if (section.items) {
+    return section.items.some(item => item.path && currentPath?.startsWith(item.path));
   }
+  return false;
+};
 
-  const Timetablelistdisplay = () => {
-    settimetablelist(timetablelist === "none" ? "block" : "none");
+
+  const isItemActive = (itemPath) => {
+    return currentPath.startsWith(itemPath);
   };
-
-  const acadmiclistdisplay = () => {
-    setacadmicCalelist(acadmicCalelist === "none" ? "block" : "none");
-  };
-
-  const Assignmentlistdisplay = () => {
-    setassignmentlist(assignmentlist === "none" ? "block" : "none");
-  };
-
-  const Admitionslistdisplay = () => {
-    setadmitionlist(admitionlist === "none" ? "block" : "none");
-  };
-  const HostelRoomslistdisplay = () => {
-    setHostelroom(hostelroom === "none" ? "block" : "none");
-  }
-
-    const Hostelfeeslistdisplay = () => {
-    setHostelfee(hostelfee === "none" ? "block" : "none");
-  }
-    const Hostelmaintenancelistdisplay = () => {
-    setHostelmaintanence(hostelmaintanence === "none" ? "block" : "none");
-  }
 
   return (
-    <div className="sidebar-content">
-      <h2>Admin Menu</h2>
-      <div className="sidebar-scrollable">
+    <div className="admin-sidebar">
+      <div className="admin-sidebar__header">
+        <FaUserCog className="admin-sidebar__header-icon" />
+        <span className="admin-sidebar__header-title">Administration</span>
+      </div>
 
+      <nav className="admin-sidebar__nav">
+        <ul className="admin-sidebar__menu">
+          {menuSections.map((section) => (
+            <li key={section.id} className="admin-sidebar__menu-item">
+              {/* Single Item or Expandable Section */}
+              {section.items ? (
+                <>
+                  <button
+                    className={`admin-sidebar__section-btn ${
+                      isSectionActive(section) ? 'admin-sidebar__section-btn--active' : ''
+                    } ${expandedItems?.[section.id] ? 'admin-sidebar__section-btn--expanded' : ''}`}
+                    onClick={() => toggleExpand(section.id)}
+                  >
+                    <div className="admin-sidebar__section-content">
+                      {section.icon}
+                      <span className="admin-sidebar__section-label">{section.label}</span>
+                    </div>
+                    <FaAngleRight className={`admin-sidebar__expand-icon ${
+                      expandedItems?.[section.id] ? 'admin-sidebar__expand-icon--expanded' : ''
+                    }`} />
+                  </button>
 
-        {/* *************Admin Dashboard************ */}
-        <li className="arrow-list">
-          <Link to="/admin/registrardash">
-            <div
-              className="ad-min"
-              style={{ color: theme === "dark" ? "#000000" : "#ffffff" }}
-            >
-              <FaUserCog />
-              Admin Dashboard
-            </div>
-          </Link>
-          <button
-            onClick={Adminlistdisplay}
-            className="student-toggle-btn"
-            style={{
-              transform: adminlist !== "block" ? "" : "rotate(90deg)",
-            }}
-          >
-            <FaAngleRight />
-          </button>
-        </li>
-        <ul className="sidebar-links" style={{ display: adminlist }}>
-          <Link to="/admin/facultylist">
-            <li>Facultylist</li>
-          </Link>
-          <Link to="/admin/allstudentlist">
-            <li>AllStudentlist</li>
-          </Link>
-          <Link to="/admin/userslist">
-            <li>User List</li>
-          </Link>
-          <Link to="/admin/createexam">
-            <li>CreateExam</li>
-          </Link>
-          <Link to="/admin/allexams">
-            <li>AllExams</li>
-          </Link>
-          <Link to="/admin/create-attendance">
-            <li>Attendance Create</li>
-          </Link>
+                  {/* Submenu Items */}
+                  {expandedItems?.[section.id] && (
+                    <ul className="admin-sidebar__submenu">
+                      {section.items.map((item, index) => (
+                        <li key={index} className="admin-sidebar__submenu-item">
+                          <Link
+                            to={item.path}
+                            className={`admin-sidebar__submenu-link ${
+                              isItemActive(item.path) ? 'admin-sidebar__submenu-link--active' : ''
+                            }`}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              handleNavigation(item.path);
+                            }}
+                          >
+                            <div className="admin-sidebar__submenu-content">
+                              <span className="admin-sidebar__submenu-icon">{item.icon}</span>
+                              <span className="admin-sidebar__submenu-label">{item.label}</span>
+                            </div>
+                            {isItemActive(item.path) && (
+                              <div className="admin-sidebar__active-indicator"></div>
+                            )}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </>
+              ) : (
+                // Single item without submenu
+                <Link
+                  to={section.path}
+                  className={`admin-sidebar__single-link ${
+                    isSectionActive(section) ? 'admin-sidebar__single-link--active' : ''
+                  }`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavigation(section.path);
+                  }}
+                >
+                  <div className="admin-sidebar__single-content">
+                    {section.icon}
+                    <span className="admin-sidebar__single-label">{section.label}</span>
+                  </div>
+                  {isSectionActive(section) && (
+                    <div className="admin-sidebar__active-indicator"></div>
+                  )}
+                </Link>
+              )}
+            </li>
+          ))}
         </ul>
+      </nav>
 
-        {/* *************Admition Magagment************ */}
-        <li className="arrow-list" onClick={Admitionslistdisplay}>
-            <div
-              className="ad-min"
-              style={{ color: theme === "dark" ? "#000000" : "#ffffff" }}
-            >
-              <FaUserCog />
-              Admition Management
-            </div>
-          <button
-            className="student-toggle-btn"
-            style={{
-              transform: admitionlist !== "block" ? "" : "rotate(90deg)",
-            }}
-          >
-            <FaAngleRight />
-          </button>
-        </li>
-        <ul className="sidebar-links" style={{ display: admitionlist }}>
-          <Link to="/admin/newstudentregistration">
-          <li>New Student Register</li>
-          </Link>
-          <Link to="/admin/newfacultyregistration">
-          <li>New Faculty Register</li>
-          </Link>
-        </ul>
-
-        {/* *************TimeTable Dashboard************ */}
-        <li className="arrow-list" onClick={Timetablelistdisplay}>
-            <div
-              className="ad-min"
-              style={{ color: theme === "dark" ? "#000000" : "#ffffff" }}
-            >
-              <FaUserCog />
-              Time Table
-            </div>
-          <button
-            className="student-toggle-btn"
-            style={{
-              transform: timetablelist !== "block" ? "" : "rotate(90deg)",
-            }}
-          >
-            <FaAngleRight />
-          </button>
-        </li>
-        <ul className="sidebar-links" style={{ display: timetablelist }}>
-          <Link to="/admin/newtimetable">
-            <li>Create Timetable</li>
-          </Link>
-          <Link to="/admin/viewalltimetables">
-            <li>View AllTimetable</li>
-          </Link>
-        </ul>
-
-        {/* ****************Attendance Management************* */}
-        {/* <li className="arrow-list" onClick={Attendencelistdisplay}>
-          <div
-            className="ad-min"
-            style={{ color: theme === "dark" ? "#000000" : "#ffffff" }}
-          >
-            Attendance Management
+      {/* Quick Stats or System Status */}
+      <div className="admin-sidebar__footer">
+        <div className="admin-sidebar__status">
+          <div className="admin-sidebar__status-item">
+            <div className="admin-sidebar__status-dot admin-sidebar__status-dot--online"></div>
+            <span className="admin-sidebar__status-text">System Online</span>
           </div>
-          <button
-            className="student-toggle-btn"
-            style={{
-              transform: attendencelist !== "block" ? "" : "rotate(90deg)",
-            }}
-          >
-            <FaAngleRight />
-          </button>
-        </li>
-        <ul className="sidebar-links" style={{ display: attendencelist }}>
-          <Link to="/attendance-dashboard">
-            <li> Attendance Dashboard </li>
-          </Link>
-          <Link to="/attendance-recording">
-            <li> Attendance Recording </li>
-          </Link>
-          <Link to="/attendance-reports">
-            <li> Attendance Reports </li>
-          </Link>
-        </ul> */}
-
-        {/* ****************Department Management************* */}
-        <li className="arrow-list" onClick={Departmentlistdisplay}>
-            <div
-              className="ad-min"
-              style={{ color: theme === "dark" ? "#000000" : "#ffffff" }}
-            >
-              Department Management
-            </div>
-          <button
-            className="student-toggle-btn"
-            style={{
-              transform: departmentlist !== "block" ? "" : "rotate(90deg)",
-            }}
-          >
-            <FaAngleRight />
-          </button>
-        </li>
-        <ul className="sidebar-links" style={{ display: departmentlist }}>
-          <Link to="/admin/departmentform">
-            <li>Department Form</li>
-          </Link>
-          <Link to="/admin/departmentlist">
-            <li> Department List</li>
-          </Link>
-          {/* <Link to="/admin/departmentdetail/:id">
-            <li> Department Detail</li>
-          </Link> */}
-        </ul>
-
-        {/* ****************Designation Management************* */}
-        <li className="arrow-list" onClick={Designationlistdisplay}>
-            <div
-              className="ad-min"
-              style={{ color: theme === "dark" ? "#000000" : "#ffffff" }}
-            >
-              Designation Management
-            </div>
-          <button
-            className="student-toggle-btn"
-            style={{
-              transform: designationlist !== "block" ? "" : "rotate(90deg)",
-            }}
-          >
-            <FaAngleRight />
-          </button>
-        </li>
-        <ul className="sidebar-links" style={{ display: designationlist }}>
-          <Link to="/admin/designationform">
-            <li> Designation Form</li>
-          </Link>
-          <Link to="/admin/designationlist">
-            <li> Designation List</li>
-          </Link>
-          {/* <Link to="/admin/designationdetail/:id">
-            <li> Designation Detail</li>
-          </Link> */}
-        </ul>
-
-        {/* ****************Subject Management************* */}
-        <li className="arrow-list"  onClick={Subjectlistdisplay}>
-            <div
-              className="ad-min"
-              style={{ color: theme === "dark" ? "#000000" : "#ffffff" }}
-            >
-              Subject Management
-            </div>
-          <button
-            className="student-toggle-btn"
-            style={{
-              transform: subjectlist !== "block" ? "" : "rotate(90deg)",
-            }}
-          >
-            <FaAngleRight />
-          </button>
-        </li>
-        <ul className="sidebar-links" style={{ display: subjectlist }}>
-          <Link to="/admin/createsubject">
-            <li> Create Subject</li>
-          </Link>
-          <Link to="/admin/subjectslist">
-            <li> Subject List</li>
-          </Link>
-          {/* <Link to="subject/:subjectId/addstudent/:id">
-            <li> Add Student To Subject</li>
-          </Link> */}
-          {/* <Link to="enrolledstudentlist/:subjectId">
-            <li> Enrolled Students List</li>
-          </Link>
-           <Link to="bulk-enrollment/:subjectId">
-            <li> Bulk Enrollment</li>
-          </Link> */}
-        </ul>
-
-        {/* ****************Course Management************* */}  
-        <li className="arrow-list" onClick={Courselistdisplay}>
-            <div
-              className="ad-min"
-              style={{ color: theme === "dark" ? "#000000" : "#ffffff" }}
-            >
-              Course Management
-            </div>
-          <button
-            className="student-toggle-btn"
-            style={{
-              transform: courselist !== "block" ? "" : "rotate(90deg)",
-            }}
-          >
-            <FaAngleRight />
-          </button>
-        </li>
-        <ul className="sidebar-links" style={{ display: courselist }}>
-          <Link to="/admin/createcourse">
-            <li>Course Form</li>
-          </Link>
-          <Link to="/admin/courselist">
-            <li> Course List</li>
-          </Link>
-          {/* <Link to="/admin/coursedetail/:id">
-            <li> Course Detail</li>
-          </Link>
-          <Link to="/admin/editcourse/:id">
-            <li> Edit Course</li>
-          </Link> */}
-          {/* <Link to="/admin/courseassignedsubject/:id">
-            <li> CourseAssignedSubject</li>
-          </Link> */}
-        </ul>
-
-        {/* ****************Acadmic Calender************* */}
-        <li className="arrow-list" onClick={acadmiclistdisplay}>   
-            <div
-              className="ad-min"
-              style={{ color: theme === "dark" ? "#000000" : "#ffffff" }}
-            >
-              Acadmic Calender
-            </div>
-          <button
-            className="student-toggle-btn"
-            style={{
-              transform: acadmicCalelist !== "block" ? "" : "rotate(90deg)",
-            }}
-          >
-            <FaAngleRight />
-          </button>
-        </li>
-        <ul className="sidebar-links" style={{ display: acadmicCalelist }}>
-          <Link to="/admin/createacadmiccalender">
-            <li>CreateAcademicCalendar</li>
-          </Link>
-          <Link to="/admin/viewacadmiccalender">
-            <li>ViewAcademicCalendar</li>
-          </Link>
-        </ul>
-
-        {/**********Hostel Management ******************/}
-
-        {/* Rooms */}
-        <li className="arrow-list" onClick={HostelRoomslistdisplay}>   
-            <div
-              className="ad-min"
-              style={{ color: theme === "dark" ? "#000000" : "#ffffff" }}
-            >
-              Hostel Rooms
-            </div>
-          <button
-            className="student-toggle-btn"
-            style={{
-              transform: hostelroom !== "block" ? "" : "rotate(90deg)",
-            }}
-          >
-            <FaAngleRight />
-          </button>
-        </li>
-         <ul className="sidebar-links" style={{ display: hostelroom }}>
-          <Link to="/admin/createroom">
-            <li>Create Room</li>
-          </Link>
-          <Link to="/admin/rooms">
-            <li>RoomsList</li>
-          </Link>
-          <Link to="/admin/updateroom">
-            <li>Update Room</li>
-          </Link>
-          <Link to="/admin/allocateroom">
-            <li>Allocate Room</li>
-          </Link>
-        </ul>
-
-      {/* Fee */}
-       <li className="arrow-list" onClick={Hostelfeeslistdisplay}>   
-            <div
-              className="ad-min"
-              style={{ color: theme === "dark" ? "#000000" : "#ffffff" }}
-            >
-              Hostel Fees
-            </div>
-          <button
-            className="student-toggle-btn"
-            style={{
-              transform: hostelfee !== "block" ? "" : "rotate(90deg)",
-            }}
-          >
-            <FaAngleRight />
-          </button>
-        </li>
-         <ul className="sidebar-links" style={{ display: hostelfee }}>
-          <Link to="/admin/fee/create">
-            <li>Create Fee</li>
-          </Link>
-          <Link to="/admin/fee/duereport">
-            <li>Fee Report</li>
-          </Link>
-          <Link to="/admin/fee/list">
-            <li>Fee List</li>
-          </Link>
-          <Link to="/admin/fee/student">
-            <li>Fee Student</li>
-          </Link>
-        </ul>
-
-      {/* Maintanence */}
-        <li className="arrow-list" onClick={Hostelmaintenancelistdisplay}>   
-            <div
-              className="ad-min"
-              style={{ color: theme === "dark" ? "#000000" : "#ffffff" }}
-            >
-              Hostel Maintanence
-            </div>
-          <button
-            className="student-toggle-btn"
-            style={{
-              transform: hostelmaintanence !== "block" ? "" : "rotate(90deg)",
-            }}
-          >
-            <FaAngleRight />
-          </button>
-        </li>
-         <ul className="sidebar-links" style={{ display: hostelmaintanence }}>
-          <Link to="/admin/maintenance/create">
-            <li>Create Maintenance</li>
-          </Link>
-          <Link to="/admin/maintenance/list">
-            <li>Maintenance List</li>
-          </Link>
-        </ul>
-
-        {/* ****************Assignament Calender************* */}
-        {/* <li className="arrow-list" onClick={Assignmentlistdisplay}>
-            <div
-              className="ad-min"
-              style={{ color: theme === "dark" ? "#000000" : "#ffffff" }}
-            >
-              Assignment Management
-            </div>
-          <button
-            className="student-toggle-btn"
-            style={{
-              transform: assignmentlist !== "block" ? "" : "rotate(90deg)",
-            }}
-          >
-            <FaAngleRight />
-          </button>
-        </li>
-        <ul className="sidebar-links" style={{ display: assignmentlist }}>
-          <Link to="/create-assignment">
-            <li> Create Assignment</li>
-          </Link>
-
-          <Link to="/class-management">
-            <li> Class Management</li>
-          </Link>
-
-          <Link to="/communication">
-            <li> Communication </li>
-          </Link>
-        </ul> */}
-
-        {/* <ul className="sidebar-links">
-
-              <Link to="/allstudentlist">
-                <li>
-                  <FaClipboardList />
-                  Studentlist
-                </li>
-              </Link>
-              <Link to="/viewalltimetables">
-                <li>View TimeTable</li>
-              </Link>
-              <Link to="/setnewquiz">
-                <li>Create Quiz</li>
-              </Link>
-              <Link to="/allquiz">
-                <li>All Quizs</li>
-              </Link>
-  
-        </ul> */}
+        </div>
       </div>
     </div>
   );

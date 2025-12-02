@@ -29,7 +29,7 @@ const AccountantPages = () => {
       {/* ********************************* Student control ***************************** */}
       <Route path="allstudentlist" exact Component={AllStudentlist} />
       <Route path="student-profile/:id" exact Component={StudentProfile} />
-      <Route path="student/:id" exact Component={Studentdetail} />
+      {/* <Route path="student/:id" exact Component={Studentdetail} /> */}
 
       {/* Accountant specific routes */}
       <Route

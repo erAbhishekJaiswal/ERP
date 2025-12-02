@@ -28,12 +28,6 @@ const DeanDashboard = () => {
 
                 </div>
             </div>
-            
-            {/* <ViewCourses />
-            <FacultyList />
-            <AssignFacultyToCourse />
-            <ViewDepartmentBudget />
-            <ApprovePromotion /> */}
         </div>
     );
 };

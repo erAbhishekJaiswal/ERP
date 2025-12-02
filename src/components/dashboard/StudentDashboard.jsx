@@ -1,429 +1,4 @@
-// import React from 'react';
-// import { Link } from 'react-router-dom';
-// import "../../CSSfolder/StudentCSS/studentdashboard.css";
-
-// const StudentDashboard = () => {
-//   // Mock data - replace with actual data from your API
-//   const studentData = {
-//     name: "Sneha Patil",
-//     rollNumber: "EN20230001",
-//     department: "Computer Science",
-//     semester: "5th",
-//     upcomingAssignments: 3,
-//     pendingQuizzes: 2,
-//     attendancePercentage: 85,
-//     ongoingCourses: 4
-//   };
-
-//   return (
-//     <div className="student-dashboard">
-//       {/* Header Section */}
-//       <div className="dashboard-header">
-//         <div className="student-profile">
-//           <div className="avatar">RS</div>
-//           <div className="student-info">
-//             <h2>Welcome back, {studentData.name}</h2>
-//             <p>{studentData.rollNumber} | {studentData.department} | {studentData.semester}</p>
-//           </div>
-//         </div>
-//         <div className="quick-stats">
-//           <div className="dashboard-stat-card">
-//             <div className="stat-icon assignment">📝</div>
-//             <div className="stat-content">
-//               <h3>{studentData.upcomingAssignments}</h3>
-//               <p>Upcoming Assignments</p>
-//             </div>
-//           </div>
-//           <div className="dashboard-stat-card">
-//             <div className="stat-icon quiz">🧠</div>
-//             <div className="stat-content">
-//               <h3>{studentData.pendingQuizzes}</h3>
-//               <p>Pending Quizzes</p>
-//             </div>
-//           </div>
-//           <div className="dashboard-stat-card">
-//             <div className="stat-icon attendance">✅</div>
-//             <div className="stat-content">
-//               <h3>{studentData.attendancePercentage}%</h3>
-//               <p>Attendance</p>
-//             </div>
-//           </div>
-//           <div className="dashboard-stat-card">
-//             <div className="stat-icon course">📚</div>
-//             <div className="stat-content">
-//               <h3>{studentData.ongoingCourses}</h3>
-//               <p>Ongoing Courses</p>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-
-//       {/* Main Content */}
-//       <div className="dashboard-content">
-//         {/* Modules Section */}
-//         <div className="modules-section">
-//           <h2 className="section-title">Your Modules</h2>
-//           <div className="modules-grid">
-//             {/* Assignment Module */}
-//             <Link to="/assignments" className="module-card assignment">
-//               <div className="module-icon">📝</div>
-//               <h3>Assignments</h3>
-//               <p>View and submit your assignments</p>
-//               <div className="module-badge">{studentData.upcomingAssignments} new</div>
-//             </Link>
-
-//             {/* Attendance Module */}
-//             <Link to="/attendance" className="module-card attendance">
-//               <div className="module-icon">✅</div>
-//               <h3>Attendance</h3>
-//               <p>Check your attendance records</p>
-//               <div className="progress-circle">
-//                 <div className="circle-progress" style={{ '--percentage': `${studentData.attendancePercentage}%` }}>
-//                   <span>{studentData.attendancePercentage}%</span>
-//                 </div>
-//               </div>
-//             </Link>
-
-//             {/* ECourse Module */}
-//             <Link to="/ecourses" className="module-card ecourse">
-//               <div className="module-icon">🎓</div>
-//               <h3>E-Courses</h3>
-//               <p>Access your online courses</p>
-//               <div className="module-badge">{studentData.ongoingCourses} active</div>
-//             </Link>
-
-//             {/* Quiz Module */}
-//             <Link to="/quizzes" className="module-card quiz">
-//               <div className="module-icon">🧠</div>
-//               <h3>Quizzes</h3>
-//               <p>Take your scheduled quizzes</p>
-//               <div className="module-badge">{studentData.pendingQuizzes} pending</div>
-//             </Link>
-//           </div>
-//         </div>
-
-//         {/* Recent Activity Section */}
-//         <div className="activity-section">
-//           <h2 className="section-title">Recent Activity</h2>
-//           <div className="activity-list">
-//             <div className="activity-item">
-//               <div className="activity-icon">📝</div>
-//               <div className="activity-content">
-//                 <p>Submitted <strong>Data Structures Assignment 3</strong></p>
-//                 <span className="activity-time">2 hours ago</span>
-//               </div>
-//             </div>
-//             <div className="activity-item">
-//               <div className="activity-icon">✅</div>
-//               <div className="activity-content">
-//                 <p>Marked present in <strong>Database Systems</strong></p>
-//                 <span className="activity-time">Yesterday</span>
-//               </div>
-//             </div>
-//             <div className="activity-item">
-//               <div className="activity-icon">🧠</div>
-//               <div className="activity-content">
-//                 <p>Completed <strong>Operating Systems Quiz 2</strong> with 85%</p>
-//                 <span className="activity-time">2 days ago</span>
-//               </div>
-//             </div>
-//             <div className="activity-item">
-//               <div className="activity-icon">🎓</div>
-//               <div className="activity-content">
-//                 <p>Started new course <strong>Computer Networks</strong></p>
-//                 <span className="activity-time">3 days ago</span>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default StudentDashboard;
-
-// import React from 'react';
-// import { Link } from 'react-router-dom';
-// import { FiBook, FiCheckCircle, FiClipboard, FiAward, FiClock, FiUser } from 'react-icons/fi';
-// import { BsGraphUp, BsCalendarCheck } from 'react-icons/bs';
-// import { RiFilePaper2Line, RiQuillPenLine } from 'react-icons/ri';
-// import { CircularProgressbar } from 'react-circular-progressbar';
-// import 'react-circular-progressbar/dist/styles.css';
-// import "../../CSSfolder/StudentCSS/studentdashboard.css";
-
-// const StudentDashboard = () => {
-//   // Mock data - replace with actual data from your API
-//   const studentData = {
-//     name: "Sneha Patil",
-//     rollNumber: "EN20230001",
-//     department: "Computer Science",
-//     semester: "5th Semester",
-//     upcomingAssignments: 3,
-//     pendingQuizzes: 2,
-//     attendancePercentage: 85,
-//     ongoingCourses: 4,
-//     courses: [
-//       { code: "CS501", name: "Advanced Algorithms", progress: 65 },
-//       { code: "CS502", name: "Database Systems", progress: 80 },
-//       { code: "CS503", name: "Computer Networks", progress: 45 },
-//       { code: "CS504", name: "Machine Learning", progress: 30 }
-//     ]
-//   };
-
-//   const recentActivities = [
-//     {
-//       icon: <RiFilePaper2Line />,
-//       title: "Submitted Data Structures Assignment 3",
-//       time: "2 hours ago",
-//       type: "assignment"
-//     },
-//     {
-//       icon: <FiCheckCircle />,
-//       title: "Marked present in Database Systems",
-//       time: "Yesterday",
-//       type: "attendance"
-//     },
-//     {
-//       icon: <RiQuillPenLine />,
-//       title: "Completed Operating Systems Quiz 2 with 85%",
-//       time: "2 days ago",
-//       type: "quiz"
-//     },
-//     {
-//       icon: <FiBook />,
-//       title: "Started new course Computer Networks",
-//       time: "3 days ago",
-//       type: "course"
-//     }
-//   ];
-
-//   return (
-//     <div className="student-dashboard">
-//       {/* Header Section */}
-//       <header className="dashboard-header">
-//         <div className="header-content">
-//           <div className="student-profile">
-//             <div className="avatar">
-//               <FiUser />
-//             </div>
-//             <div className="student-info">
-//               <h1>Welcome back, <span>{studentData.name}</span></h1>
-//               <p className="student-meta">
-//                 <span>{studentData.rollNumber}</span>
-//                 <span className="divider">|</span>
-//                 <span>{studentData.department}</span>
-//                 <span className="divider">|</span>
-//                 <span>{studentData.semester}</span>
-//               </p>
-//             </div>
-//           </div>
-//         </div>
-//       </header>
-
-//       {/* Quick Stats */}
-//       <div className="quick-stats-container">
-//         <div className="quick-stats">
-//           <div className="dashboard-stat-card">
-//             <div className="stat-icon assignment">
-//               <FiClipboard />
-//             </div>
-//             <div className="stat-content">
-//               <h3>{studentData.upcomingAssignments}</h3>
-//               <p>Upcoming Assignments</p>
-//             </div>
-//           </div>
-//           <div className="dashboard-stat-card">
-//             <div className="stat-icon quiz">
-//               <RiQuillPenLine />
-//             </div>
-//             <div className="stat-content">
-//               <h3>{studentData.pendingQuizzes}</h3>
-//               <p>Pending Quizzes</p>
-//             </div>
-//           </div>
-//           <div className="dashboard-stat-card">
-//             <div className="stat-icon attendance">
-//               <BsCalendarCheck />
-//             </div>
-//             <div className="stat-content">
-//               <h3>{studentData.attendancePercentage}%</h3>
-//               <p>Attendance</p>
-//             </div>
-//           </div>
-//           <div className="dashboard-stat-card">
-//             <div className="stat-icon course">
-//               <FiBook />
-//             </div>
-//             <div className="stat-content">
-//               <h3>{studentData.ongoingCourses}</h3>
-//               <p>Ongoing Courses</p>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-
-//       {/* Main Content */}
-//       <div className="dashboard-content">
-//         {/* Left Column */}
-//         <div className="content-left">
-//           {/* Modules Section */}
-//           <section className="modules-section">
-//             <div className="section-header">
-//               <h2>Quick Access</h2>
-//               <div className="section-actions"></div>
-//             </div>
-//             <div className="modules-grid">
-//               <Link to="/student/assignment-page" className="module-card assignment">
-//                 <div className="module-icon">
-//                   <FiClipboard />
-//                 </div>
-//                 <div className="module-content">
-//                   <h3>Assignments</h3>
-//                   <p>View and submit your assignments</p>
-//                 </div>
-//                 <div className="module-badge">{studentData.upcomingAssignments} new</div>
-//               </Link>
-
-//               <Link to="/student/attendence" className="module-card attendance">
-//                 <div className="module-icon">
-//                   <FiCheckCircle />
-//                 </div>
-//                 <div className="module-content">
-//                   <h3>Attendance</h3>
-//                   <p>Check your attendance records</p>
-//                 </div>
-//                 <div className="progress-circle">
-//                   <CircularProgressbar
-//                     value={studentData.attendancePercentage}
-//                     text={`${studentData.attendancePercentage}%`}
-//                     styles={{
-//                       path: {
-//                         stroke: `#4CAF50`,
-//                       },
-//                       text: {
-//                         fill: '#4CAF50',
-//                         fontSize: '24px',
-//                         fontWeight: 'bold',
-//                       },
-//                     }}
-//                   />
-//                 </div>
-//               </Link>
-
-//               <Link to="/student/e-course" className="module-card ecourse">
-//                 <div className="module-icon">
-//                   <FiBook />
-//                 </div>
-//                 <div className="module-content">
-//                   <h3>E-Courses</h3>
-//                   <p>Access your online courses</p>
-//                 </div>
-//                 <div className="module-badge">{studentData.ongoingCourses} active</div>
-//               </Link>
-
-//               <Link to="/student/studentsquiz" className="module-card quiz">
-//                 <div className="module-icon">
-//                   <RiQuillPenLine />
-//                 </div>
-//                 <div className="module-content">
-//                   <h3>Quizzes</h3>
-//                   <p>Take your scheduled quizzes</p>
-//                 </div>
-//                 <div className="module-badge">{studentData.pendingQuizzes} pending</div>
-//               </Link>
-//             </div>
-//           </section>
-
-//           {/* Courses Progress Section */}
-//           {/* <section className="courses-section">
-//             <div className="section-header">
-//               <h2>Your Courses Progress</h2>
-//               <Link to="/courses" className="view-all">View All</Link>
-//             </div>
-//             <div className="courses-list">
-//               {studentData.courses.map((course, index) => (
-//                 <div className="course-item" key={index}>
-//                   <div className="course-info">
-//                     <h3>{course.code}</h3>
-//                     <p>{course.name}</p>
-//                   </div>
-//                   <div className="course-progress">
-//                     <div className="progress-bar">
-//                       <div
-//                         className="progress-fill"
-//                         style={{ width: `${course.progress}%` }}
-//                       ></div>
-//                     </div>
-//                     <span className="progress-percent">{course.progress}%</span>
-//                   </div>
-//                 </div>
-//               ))}
-//             </div>
-//           </section> */}
-//         </div>
-
-//         {/* Right Column */}
-//         {/* <div className="content-right">
-//           Recent Activity Section
-//           <section className="activity-section">
-//             <div className="section-header">
-//               <h2>Recent Activity</h2>
-//               <Link to="/activity" className="view-all">View All</Link>
-//             </div>
-//             <div className="activity-list">
-//               {recentActivities.map((activity, index) => (
-//                 <div className={`activity-item ${activity.type}`} key={index}>
-//                   <div className="activity-icon">{activity.icon}</div>
-//                   <div className="activity-content">
-//                     <p>{activity.title}</p>
-//                     <div className="activity-meta">
-//                       <FiClock className="time-icon" />
-//                       <span>{activity.time}</span>
-//                     </div>
-//                   </div>
-//                 </div>
-//               ))}
-//             </div>
-//           </section>
-
-//           Performance Summary
-//           <section className="performance-section">
-//             <div className="section-header">
-//               <h2>Performance Summary</h2>
-//             </div>
-//             <div className="performance-card">
-//               <div className="performance-metric">
-//                 <div className="metric-icon">
-//                   <BsGraphUp />
-//                 </div>
-//                 <div className="metric-content">
-//                   <h3>Overall Grade</h3>
-//                   <p className="grade">A-</p>
-//                   <p className="change positive">↑ 2.5% from last term</p>
-//                 </div>
-//               </div>
-//               <div className="performance-metric">
-//                 <div className="metric-icon">
-//                   <FiAward />
-//                 </div>
-//                 <div className="metric-content">
-//                   <h3>Rank in Department</h3>
-//                   <p className="rank">12th</p>
-//                   <p className="change positive">↑ 3 positions</p>
-//                 </div>
-//               </div>
-//             </div>
-//           </section>
-//         </div> */}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default StudentDashboard;
-
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   FiBook,
@@ -432,16 +7,19 @@ import {
   FiAward,
   FiClock,
   FiUser,
+  FiChevronRight,
+  FiBell,
+  FiSearch,
 } from "react-icons/fi";
 import { BsGraphUp, BsCalendarCheck } from "react-icons/bs";
 import { RiFilePaper2Line, RiQuillPenLine } from "react-icons/ri";
-import { CircularProgressbar } from "react-circular-progressbar";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import "../../CSSfolder/StudentCSS/studentdashboard.css";
-import apiClient from '../../services/axios'
+import apiClient from '../../services/axios';
 
 const StudentDashboard = () => {
-  const [data, setData] = React.useState({
+  const [data, setData] = useState({
     studentdashboard: {
       student: {
         fullname: "",
@@ -452,50 +30,58 @@ const StudentDashboard = () => {
         department_name: "",
       },
       assignments: [
-            {
-                assignment_id: "",
-                assignment_name: "",
-                upcoming: false
-            }
-        ],
-        upcommingassignments: null,
-        subjects: [
-            {
-                subject_id: "",
-                subject_code: "",
-                subject_name: ""
-            }
-        ],
-        quiz: [
-            {
-                quiz_id: "",
-                quiz_name: ""
-            }
-        ],
-        totalpercentage: "00",
-        exam: [
-            {
-                name: ""
-            }
-        ]
+        {
+          assignment_id: "",
+          assignment_name: "",
+          upcoming: false
+        }
+      ],
+      upcommingassignments: null,
+      subjects: [
+        {
+          subject_id: "",
+          subject_code: "",
+          subject_name: ""
+        }
+      ],
+      quiz: [
+        {
+          quiz_id: "",
+          quiz_name: ""
+        }
+      ],
+      totalpercentage: "00",
+      exam: [
+        {
+          name: ""
+        }
+      ]
     },
   });
+
+  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+
   const id = localStorage.getItem("profileid");
+
   useEffect(() => {
     const studentdata = async (id) => {
       try {
+        setLoading(true);
         const response = await apiClient.get(
           `/api/student/studentdashboard/${id}`
         );
-        // const responseData = await response.json();
         console.log(response.data);
         setData(response.data);
       } catch (error) {
         console.error(error);
+      } finally {
+        setLoading(false);
       }
     };
     studentdata(id);
   }, [id]);
+
   // Destructure the API response data
   const {
     fullname,
@@ -504,7 +90,7 @@ const StudentDashboard = () => {
     enrollment_number,
     current_semester,
     department_name,
-  } = data?.studentdashboard?.student;
+  } = data?.studentdashboard?.student || {};
 
   const {
     assignments,
@@ -515,232 +101,343 @@ const StudentDashboard = () => {
     exam,
   } = data.studentdashboard;
 
+  // Filter subjects based on search
+  const filteredSubjects = subjects.filter(subject =>
+    subject.subject_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    subject.subject_code.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   // Prepare recent activities from the data
   const recentActivities = [
     ...assignments.filter(a => !a.upcoming).map(a => ({
       icon: <RiFilePaper2Line />,
       title: `Submitted ${a.assignment_name}`,
-      time: "Recently",
+      time: "2 hours ago",
       type: "assignment"
     })),
     ...quiz.map(q => ({
       icon: <RiQuillPenLine />,
       title: `Completed ${q.quiz_name}`,
-      time: "Recently",
+      time: "1 day ago",
       type: "quiz"
     }))
-  ].slice(0, 4); // Limit to 4 most recent activities
+  ].slice(0, 4);
+
+  if (loading) {
+    return (
+      <div className="student-dashboard-loading">
+        <div className="loading-spinner"></div>
+        <p>Loading your dashboard...</p>
+      </div>
+    );
+  }
 
   return (
-    <div className="student-dashboard">
+    <div className="student-dashboard-modern">
       {/* Header Section */}
-      <header className="dashboard-header">
-        <div className="header-content">
-          <div className="student-profile">
-            <div className="avatar">
+      <header className="dashboard-modern-header">
+        <div className="header-modern-content">
+          <div className="student-profile-modern">
+            {/* <div className="avatar-modern">
               <FiUser />
-            </div>
-            <div className="student-info">
-              <h1>Welcome back, <span>{fullname}</span></h1>
-              <p style={{color:'white'}} className="student-meta">
-                <span>{enrollment_number}</span>
-                <span className="divider">|</span>
-                <span>{department_name}</span>
-                <span className="divider">|</span>
-                <span>Semester {current_semester}</span>
+            </div> */}
+            <div className="student-info-modern">
+              <h1 className="welcome-title">Welcome back, <span className="student-name-highlight">{fullname}</span></h1>
+              <p className="student-meta-modern">
+                <span className="meta-badge">{enrollment_number}</span>
+                <span className="meta-badge">{department_name}</span>
+                <span className="meta-badge">Semester {current_semester}</span>
               </p>
             </div>
           </div>
+          {/* <div className="header-actions-modern">
+            <div className="search-bar-modern">
+              <FiSearch className="search-icon-modern" />
+              <input
+                type="text"
+                placeholder="Search subjects..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="search-input-modern"
+              />
+            </div>
+            <button className="notification-btn-modern">
+              <FiBell />
+              <span className="notification-badge">3</span>
+            </button>
+          </div> */}
         </div>
       </header>
 
       {/* Quick Stats */}
-      <div className="quick-stats-container">
-        <div className="quick-stats">
-          <div className="dashboard-stat-card">
-            <div className="stat-icon assignment">
+      <div className="quick-stats-modern-container">
+        <div className="quick-stats-modern">
+          <div className="dashboard-stat-card-modern">
+            <div className="stat-icon-modern assignment-modern">
               <FiClipboard />
             </div>
-            <div className="stat-content">
-              <h3 style={{color:'black'}}>{upcommingassignments}</h3>
-              <p>Upcoming Assignments</p>
+            <div className="stat-content-modern">
+              <h3 className="stat-number">{upcommingassignments}</h3>
+              <p className="stat-label">Upcoming Assignments</p>
             </div>
+            <div className="stat-trend positive">+2</div>
           </div>
-          <div className="dashboard-stat-card">
-            <div className="stat-icon quiz">
+
+          <div className="dashboard-stat-card-modern">
+            <div className="stat-icon-modern quiz-modern">
               <RiQuillPenLine />
             </div>
-            <div className="stat-content">
-              <h3 style={{color:'black'}}>{quiz.length}</h3>
-              <p>Pending Quizzes</p>
+            <div className="stat-content-modern">
+              <h3 className="stat-number">{quiz.length}</h3>
+              <p className="stat-label">Pending Quizzes</p>
             </div>
+            <div className="stat-trend warning">Due soon</div>
           </div>
-          <div className="dashboard-stat-card">
-            <div className="stat-icon attendance">
+
+          <div className="dashboard-stat-card-modern">
+            <div className="stat-icon-modern attendance-modern">
               <BsCalendarCheck />
             </div>
-            <div className="stat-content">
-              <h3 style={{color:'black'}}>{totalpercentage}%</h3>
-              <p>Attendance</p>
+            <div className="stat-content-modern">
+              <h3 className="stat-number">{totalpercentage}%</h3>
+              <p className="stat-label">Attendance</p>
+            </div>
+            <div className="progress-ring-small">
+              <CircularProgressbar
+                value={parseFloat(totalpercentage)}
+                styles={buildStyles({
+                  pathColor: `#4CAF50`,
+                  trailColor: '#e0e0e0',
+                })}
+              />
             </div>
           </div>
-          <div className="dashboard-stat-card">
-            <div className="stat-icon course">
+
+          <div className="dashboard-stat-card-modern">
+            <div className="stat-icon-modern course-modern">
               <FiBook />
             </div>
-            <div className="stat-content">
-              <h3 style={{color:'black'}}>{subjects.length}</h3>
-              <p>Ongoing Courses</p>
+            <div className="stat-content-modern">
+              <h3 className="stat-number">{subjects.length}</h3>
+              <p className="stat-label">Ongoing Courses</p>
             </div>
+            <div className="stat-trend neutral">Active</div>
           </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="dashboard-content">
+      <div className="dashboard-modern-content">
         {/* Left Column */}
-        <div className="content-left">
-          {/* Modules Section */}
-          <section className="modules-section">
-            <div className="section-header">
-              <h2>Quick Access</h2>
-              <div className="section-actions"></div>
+        <div className="content-left-modern">
+          {/* Quick Access Section */}
+          <section className="modules-section-modern">
+            <div className="section-header-modern">
+              <h2 className="studentdashboard-section-title">Quick Access</h2>
+              <Link to="/student/all-modules" className="view-all-modern">
+                View All <FiChevronRight />
+              </Link>
             </div>
-            <div className="modules-grid">
-              <Link to="/student/assignment-page" className="module-card assignment">
-                <div className="module-icon">
+            <div className="modules-grid-modern">
+              <Link to="/student/assignment-page" className="module-card-modern assignment-modern-card">
+                <div className="module-icon-modern">
                   <FiClipboard />
                 </div>
-                <div className="module-content">
+                <div className="module-content-modern">
                   <h3>Assignments</h3>
                   <p>View and submit your assignments</p>
+                  <span className="module-status">{upcommingassignments} pending</span>
                 </div>
-                <div className="module-badge">{upcommingassignments} new</div>
+                <div className="module-arrow">
+                  <FiChevronRight />
+                </div>
               </Link>
 
-              <Link to="/student/attendence" className="module-card attendance">
-                <div className="module-icon">
+              <Link to="/student/attendence" className="module-card-modern attendance-modern-card">
+                <div className="module-icon-modern">
                   <FiCheckCircle />
                 </div>
-                <div className="module-content">
+                <div className="module-content-modern">
                   <h3>Attendance</h3>
                   <p>Check your attendance records</p>
+                  <span className="module-status">{totalpercentage}% overall</span>
                 </div>
-                <div className="progress-circle">
-                  <CircularProgressbar 
-                    value={parseFloat(totalpercentage)} 
-                    text={`${totalpercentage}%`}
-                    styles={{
-                      path: {
-                        stroke: `#4CAF50`,
-                      },
-                      text: {
-                        fill: '#4CAF50',
-                        fontSize: '24px',
-                        fontWeight: 'bold',
-                      },
-                    }}
+                <div className="progress-circle-modern">
+                  <CircularProgressbar
+                    value={parseFloat(totalpercentage)}
+                    styles={buildStyles({
+                      pathColor: `#4CAF50`,
+                      textColor: '#4CAF50',
+                      trailColor: '#e8f5e8',
+                    })}
                   />
                 </div>
               </Link>
 
-              <Link to="/student/e-course" className="module-card ecourse">
-                <div className="module-icon">
+              <Link to="/student/e-course" className="module-card-modern ecourse-modern-card">
+                <div className="module-icon-modern">
                   <FiBook />
                 </div>
-                <div className="module-content">
+                <div className="module-content-modern">
                   <h3>E-Courses</h3>
                   <p>Access your online courses</p>
+                  <span className="module-status">{subjects.length} active courses</span>
                 </div>
-                <div className="module-badge">{subjects.length} active</div>
+                <div className="module-arrow">
+                  <FiChevronRight />
+                </div>
               </Link>
 
-              <Link to="/student/studentsquiz" className="module-card quiz">
-                <div className="module-icon">
+              <Link to="/student/studentsquiz" className="module-card-modern quiz-modern-card">
+                <div className="module-icon-modern">
                   <RiQuillPenLine />
                 </div>
-                <div className="module-content">
+                <div className="module-content-modern">
                   <h3>Quizzes</h3>
                   <p>Take your scheduled quizzes</p>
+                  <span className="module-status">{quiz.length} upcoming</span>
                 </div>
-                <div className="module-badge">{quiz.length} pending</div>
+                <div className="module-arrow">
+                  <FiChevronRight />
+                </div>
               </Link>
             </div>
           </section>
 
-          {/* Courses Progress Section */}
-          <section className="courses-section">
-            <div className="section-header">
-              <h2>Your Subjects</h2>
-              {/* <Link to="/student/subjects" className="view-all">View All</Link> */}
+          {/* Subjects Section */}
+          <section className="courses-section-modern">
+            <div className="section-header-modern">
+              <h2 className="section-title">Your Subjects</h2>
+              <div className="subjects-search-modern">
+                <FiSearch className="search-icon-small" />
+                <input
+                  type="text"
+                  placeholder="Search subjects..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="search-input-small"
+                />
+              </div>
             </div>
-            <div className="courses-list">
-              {subjects.map((subject, index) => (
-                <div className="course-item" key={index}>
-                  <div className="course-info">
-                    <h3>{subject.subject_code}</h3>
-                    <p>{subject.subject_name}</p>
+            <div className="courses-list-modern">
+              {filteredSubjects.length > 0 ? (
+                filteredSubjects.map((subject, index) => (
+                  <div className="course-item-modern" key={index}>
+                    <div className="course-color-indicator" style={{ backgroundColor: `hsl(${index * 60}, 70%, 60%)` }}></div>
+                    <div className="course-info-modern">
+                      <h3 className="course-code">{subject.subject_code}</h3>
+                      <p className="course-name">{subject.subject_name}</p>
+                    </div>
+                    <div className="course-actions">
+                      <button className="course-action-btn materials">Materials</button>
+                      <button className="course-action-btn assignments">Assignments</button>
+                    </div>
                   </div>
+                ))
+              ) : (
+                <div className="no-subjects-modern">
+                  <FiBook className="no-data-icon" />
+                  <p>No subjects found matching your search</p>
                 </div>
-              ))}
+              )}
             </div>
           </section>
         </div>
 
         {/* Right Column */}
-        <div className="content-right">
+        <div className="content-right-modern">
           {/* Recent Activity Section */}
-          <section className="activity-section">
-            <div className="section-header">
-              <h2>Recent Activity</h2>
-              {/* <Link to="/student/activity" className="view-all">View All</Link> */}
+          <section className="activity-section-modern">
+            <div className="section-header-modern">
+              <h2 className="section-title">Recent Activity</h2>
+              <Link to="/student/activity" className="view-all-modern">
+                View All <FiChevronRight />
+              </Link>
             </div>
-            <div className="activity-list">
+            <div className="activity-list-modern">
               {recentActivities.length > 0 ? (
                 recentActivities.map((activity, index) => (
-                  <div className={`activity-item ${activity.type}`} key={index}>
-                    <div className="activity-icon">{activity.icon}</div>
-                    <div className="activity-content">
-                      <p>{activity.title}</p>
-                      <div className="activity-meta">
-                        <FiClock className="time-icon" />
+                  <div className={`activity-item-modern ${activity.type}-activity`} key={index}>
+                    <div className="activity-icon-modern">{activity.icon}</div>
+                    <div className="activity-content-modern">
+                      <p className="activity-title">{activity.title}</p>
+                      <div className="activity-meta-modern">
+                        <FiClock className="time-icon-modern" />
                         <span>{activity.time}</span>
                       </div>
                     </div>
+                    <div className="activity-badge"></div>
                   </div>
                 ))
               ) : (
-                <div className="no-activities">
+                <div className="no-activities-modern">
+                  <RiFilePaper2Line className="no-data-icon" />
                   <p>No recent activities found</p>
                 </div>
               )}
             </div>
           </section>
 
-          {/* Exams Section */}
-          <section className="performance-section">
-            <div className="section-header">
-              <h2>Upcoming Exams</h2>
+          {/* Upcoming Exams Section */}
+          <section className="exams-section-modern">
+            <div className="section-header-modern">
+              <h2 className="section-title">Upcoming Exams</h2>
+              <span className="exams-count">{exam.length} scheduled</span>
             </div>
-            <div className="performance-card">
+            <div className="exams-list-modern">
               {exam.length > 0 ? (
                 exam.map((examItem, index) => (
-                  <div className="performance-metric" key={index}>
-                    <div className="metric-icon">
+                  <div className="exam-item-modern" key={index}>
+                    <div className="exam-icon-modern">
                       <FiAward />
                     </div>
-                    <div className="metric-content">
-                      <h3>{examItem.name}</h3>
-                      <p className="grade">Prepare your notes</p>
-                      <p className="change positive">Upcoming</p>
+                    <div className="exam-content-modern">
+                      <h3 className="exam-name">{examItem.name}</h3>
+                      <p className="exam-date">December 15, 2024 • 10:00 AM</p>
+                      <div className="exam-actions">
+                        <button className="exam-btn primary">Study Plan</button>
+                        <button className="exam-btn secondary">Materials</button>
+                      </div>
                     </div>
+                    <div className="exam-status upcoming">Upcoming</div>
                   </div>
                 ))
               ) : (
-                <div className="no-exams">
+                <div className="no-exams-modern">
+                  <FiAward className="no-data-icon" />
                   <p>No upcoming exams scheduled</p>
+                  <button className="cta-btn-modern">View Exam Schedule</button>
                 </div>
               )}
+            </div>
+          </section>
+
+          {/* Performance Summary */}
+          <section className="performance-summary-modern">
+            <div className="section-header-modern">
+              <h2 className="section-title">Performance Summary</h2>
+            </div>
+            <div className="performance-cards-modern">
+              <div className="performance-card-modern">
+                <div className="performance-icon overall">
+                  <BsGraphUp />
+                </div>
+                <div className="performance-content">
+                  <h3>Overall Grade</h3>
+                  <p className="performance-value">A-</p>
+                  <p className="performance-change positive">+5% from last sem</p>
+                </div>
+              </div>
+              <div className="performance-card-modern">
+                <div className="performance-icon assignments">
+                  <FiClipboard />
+                </div>
+                <div className="performance-content">
+                  <h3>Assignments</h3>
+                  <p className="performance-value">92%</p>
+                  <p className="performance-change positive">On track</p>
+                </div>
+              </div>
             </div>
           </section>
         </div>

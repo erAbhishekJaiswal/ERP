@@ -1,329 +1,7 @@
-// import React, { useState, useEffect,useRef } from 'react';
-// import { Link, useNavigate } from 'react-router-dom'
-// import '../../CSSfolder/navbar.css';
-// // import { FaSearch } from "react-icons/fa";
-// // import { ImCancelCircle } from "react-icons/im";
-// import { IoHomeOutline } from "react-icons/io5";
-// import { FaBars } from "react-icons/fa";
-// import { CiLogout } from "react-icons/ci";
-// import { CiLogin } from "react-icons/ci";
-// import { CgProfile } from "react-icons/cg";
-// import { RxCross2 } from "react-icons/rx";
-// // import { FaRegUserCircle } from "react-icons/fa";
-// const Navbar = ({ endtoapp }) => {
-
-//     // Get the token, role, and username from local storage   { endtoapp }
-//     const token = localStorage.getItem('token');
-//     // const role = localStorage.getItem('role');
-//     const username = localStorage.getItem('username');
-//     const studentid = localStorage.getItem('studentid');
-//     const theme = localStorage.getItem('theme');
-
-//     // Get the navigate function from the useNavigate hook
-//     const navigate = useNavigate();
-
-//     // Use the useEffect hook to perform a side effect when the component mounts
-//     useEffect(() => {
-//         // If there is no token in local storage, navigate to the login page
-//         if (!token) {
-//             navigate('/login');
-//         }
-//     }, [token, navigate]); // The dependency array includes token and navigate
-
-//     // Define a function to handle the logout button click
-//     const handleLogout = () => {
-//         // Remove the token, role, and username from local storage
-//         localStorage.removeItem('token');
-//         localStorage.removeItem('role');
-//         localStorage.removeItem('username');
-//         localStorage.removeItem('studentid');
-//         localStorage.removeItem('facultyid');
-//         setnavbarlist("none");
-//         // Navigate to the login page
-//         navigate('/login');
-//     }
-
-//     /**********  For Sidebar button  **********/
-//     const [navbarlist, setnavbarlist] = useState('none')
-//     const navbarhandel = () => {
-//         if (navbarlist !== 'none') {
-//             setnavbarlist("none");
-//         } else {
-//             setnavbarlist("block")
-//         }
-
-//     }
-//     endtoapp(navbarlist)
-
-//     const [prfiledropdown, setprfiledropdown] = useState('none');
-//     const [isOpen, setIsOpen] = useState(false);
-//     const dropdownRef = useRef(null); // Ref for the dropdown
-//   const buttonRef = useRef(null); // Ref for the button
-
-//     const dropdown = () => {
-//         if (prfiledropdown !== 'none') {
-//             setprfiledropdown("none");
-//         } else {
-//             setprfiledropdown('block')
-//         }
-//     }
-
-//     return (
-//         <>
-
-//             <nav className="navigation" style={{ backgroundColor: theme === 'dark' ? '#ffffff' : '#0d0d2b' }}>
-//                 <div className="logo">
-//                     <button className='navbarcontrol'
-//                     onClick={navbarhandel}
-//                     // onClick={toggleSidebar}
-//                     style={{color: theme === 'dark' ? '#000000' :'#ffffff' }}>{navbarlist === "none" ? <FaBars /> : <FaBars style={{ transform: 'rotate(90deg)' }} />} </button>
-
-//                     <Link to="/"><p className='logo-text' style={{color: theme === 'dark' ? '#000000' :'#ffffff'}}>Acadmigo</p></Link>
-//                 </div>
-//                 <ul className='nav-links'>
-//                     {/* <input type="text" className='searchbox' />
-//                     <li><FaSearch /></li> */}
-//                     <Link to="/"><li style={{color: theme === 'dark' ? '#000000' :'#ffffff'}}><IoHomeOutline /> Home</li></Link>
-//                     {token ? <>
-//                     {/* <Link onClick={handleLogout}><li><CiLogout />Logout</li></Link> */}
-//                      <li> <button className='prfilebtn'  onClick={()=>{dropdown()}} style={{color: theme === 'dark' ? '#000000' :'#ffffff'}}>
-//                         {prfiledropdown === "none" ? <CgProfile />: <RxCross2 /> }
-
-//                         </button><span style={{color: theme === 'dark' ? '#000000' :'#ffffff'}}>{username}</span>
-//                     {/* {username} */}
-//                         <ul className='prfiledropdown' style={{ display: prfiledropdown }}>
-//                             <li className='dropdownlist'><Link to={`/student-profile/${studentid}`} style={{color: theme === 'dark' ? '#000000' :'#ffffff'}}>Profile</Link></li>
-//                             <li className='dropdownlist'><Link to="/" style={{color: theme === 'dark' ? '#000000' :'#ffffff'}}>Change Password</Link></li>
-//                             <li className='dropdownlist'><Link to="/login" onClick={handleLogout} style={{color: theme === 'dark' ? '#000000' :'#ffffff'}}> <CiLogout /> Logout</Link></li>
-//                         </ul>
-//                     </li> </> :
-//                         /* If the user is not logged in, display the register and login links */
-//                         <>
-//                             {/* <Link to="/register"><li>SignUp</li></Link> */}
-//                             <Link to={"/login"}><li style={{color: theme === 'dark' ? '#000000' :'#ffffff'}}><CiLogin /> <span style={{color: theme === 'dark' ? '#000000' :'#ffffff'}}>SignIn</span></li></Link>
-//                         </>
-//                     }
-
-//                     {/* <FaRegUserCircle /> */}
-//                 </ul >
-//             </nav >
-//         </>
-//     );
-// };
-
-// export default Navbar;
-
-
-
-
-
-
-
-
-
-
-
-
-// import React from "react";
-// import { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
-// import { GrUserNew } from "react-icons/gr";
-// import { Link } from "react-router-dom";
-// import { FaBars } from "react-icons/fa";
-// import "../../CSSfolder/navbar.css";
-// import { CiLogout } from "react-icons/ci";
-// import { CiLogin } from "react-icons/ci";
-// import { CgProfile } from "react-icons/cg";
-// import { RxCross2 } from "react-icons/rx";
-// import axios from "axios";
-// // import './Navbar.css';
-
-// function Navbar({ toggleSidebar, isSidebarOpen }) {
-//   const [prfiledropdown, setprfiledropdown] = useState('none');
-//   const token = localStorage.getItem("token");
-//   const theme = localStorage.getItem("theme");
-//   const username = localStorage.getItem('username');
-//   const studentid = localStorage.getItem('studentid');
-//   // const facultyid = localStorage.getItem('facultyid');
-//   // const role = localStorage.getItem('role');
-
-
-//   const navigate = useNavigate();
-
-//       const dropdown = () => {
-//         if (prfiledropdown !== 'none') {
-//             setprfiledropdown("none");
-//         } else {
-//             setprfiledropdown('block')
-//         }
-//     }
-
-//       // Define a function to handle the logout button click
-//     // const handleLogout = async () => {
-//     //   try{
-//     //     const res = await axios.post("http://localhost:5000/api/auth/logout", {withCredentials: true});
-//     //   }catch(err){
-//     //     console.log(err);        
-//     //   }
-//     //     // Remove the token, role, and username from local storage
-//     //     localStorage.removeItem('token');
-//     //     localStorage.removeItem('role');
-//     //     localStorage.removeItem('username');
-//     //     localStorage.removeItem('userid');
-//     //     localStorage.removeItem('email');
-//     //     localStorage.removeItem('profileid');
-//     //     // localStorage.removeItem('studentid');
-//     //     // localStorage.removeItem('facultyid');
-//     //     // setnavbarlist("none");
-//     //     // Navigate to the login page
-//     //     navigate('/login');
-//     // }
-
-//     const handleLogout = async () => {
-//       try {
-//         await axios.get('http://localhost:5000/api/auth/logout', {
-//           withCredentials: true
-//         });
-//         // Clear frontend storage
-//         localStorage.clear();
-//         navigate('/login');
-//       } catch (error) {
-//         console.error('Logout error:', error);
-//       }
-//     };
-
-//         // Use the useEffect hook to perform a side effect when the component mounts
-//     useEffect(() => {
-//         // If there is no token in local storage, navigate to the login page
-//         if (!token) {
-//             navigate('/login');
-//         }
-//     }, [token, navigate]); // The dependency array includes token and navigate
-
-
-//   return (
-//     <nav className="navbar">
-//       <div className="navbar-container">
-//         <div className="container-of-toggle-logo">
-//           <button onClick={toggleSidebar} className="toggle-btn">
-//             <FaBars
-//               style={{
-//                 transform: isSidebarOpen ? "rotate(90deg)" : "rotate(0deg)",
-//               }}
-//             />
-//           </button>
-//           <Link to="/">
-//             <p className="logo-text">Acadmigo</p>
-//           </Link>
-//         </div>
-//         <div className="containerbox-of-navigation">
-
-//           {token ? (
-//             <>
-//               {/* <Link onClick={handleLogout}><li><CiLogout />Logout</li></Link> */}
-              
-//                 {" "}
-//                 <button
-//                   className="prfilebtn"
-//                   onClick={() => {
-//                     dropdown();
-//                   }}
-//                   style={{ color: theme === "dark" ? "#000000" : "#ffffff" }}
-//                 >
-//                   {prfiledropdown === "none" ? <CgProfile /> : <RxCross2 />}
-//                 </button>
-//                 <span
-//                   style={{ color: theme === "dark" ? "#000000" : "#ffffff" }}
-//                 >
-//                   {username}
-//                 </span>
-//                 {/* {username} */}
-//                 <ul
-//                   className="prfiledropdown"
-//                   style={{ display: prfiledropdown }}
-//                 >
-//                   <li className="dropdownlist">
-//                     <Link
-//                       to={`/student-profile/${studentid}`}
-//                       style={{
-//                         color: theme === "dark" ? "#000000" : "#ffffff",
-//                       }}
-//                     >
-//                       Profile
-//                     </Link>
-//                   </li>
-//                   <li className="dropdownlist">
-//                     <Link
-//                       to="/"
-//                       style={{
-//                         color: theme === "dark" ? "#000000" : "#ffffff",
-//                       }}
-//                     >
-//                       Change Password
-//                     </Link>
-//                   </li>
-//                   <li className="dropdownlist">
-//                     <Link
-//                       to="/login"
-//                       onClick={handleLogout}
-//                       style={{
-//                         color: theme === "dark" ? "#000000" : "#ffffff",
-//                       }}
-//                     >
-//                       {" "}
-//                       <CiLogout /> Logout
-//                     </Link>
-//                   </li>
-//                 </ul>
-//               {" "}
-//             </>
-//           ) : (
-//             /* If the user is not logged in, display the register and login links */
-//             <>
-//               {/* <Link to="/register"><li>SignUp</li></Link> */}
-//               <Link to={"/login"}>
-//                 <li className="loginlink-btn" style={{ color: theme === "dark" ? "#000000" : "#ffffff" }}>
-//                   <CiLogin />{" "}
-//                   <span
-//                     style={{ color: theme === "dark" ? "#000000" : "#ffffff" }}
-//                   >
-//                     Login
-//                   </span>
-//                 </li>
-//               </Link>
-//               <Link to={"/register"}>
-//                 <li className="loginlink-btn" style={{ color: theme === "dark" ? "#000000" : "#ffffff" }}>
-//                 <GrUserNew />{" "}
-//                   <span
-//                     style={{ color: theme === "dark" ? "#000000" : "#ffffff" }}
-//                   >
-//                     Register
-//                   </span>
-//                 </li>
-//               </Link>
-//             </>
-//           )}
-//         </div>
-//       </div>
-//     </nav>
-//   );
-// }
-
-// export default Navbar;
-
-
-
-
-
-
-
-
-
-
 
 import { isAuthorized, getDefaultRoute } from '../../utils/authRoutes';
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { CgProfile } from "react-icons/cg";
@@ -334,28 +12,48 @@ import {
   FaUserEdit,
   FaKey,
   FaUserPlus,
-  FaSignInAlt
+  FaSignInAlt,
+  FaChevronDown,
+  FaBell,
+  FaCog
 } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
+import { IoIosNotificationsOutline } from "react-icons/io";
 import "../../CSSfolder/navbar.css";
 import apiClient from '../../services/axios';
 
 function Navbar({ toggleSidebar, isSidebarOpen }) {
   const [profileDropdown, setProfileDropdown] = useState(false);
+  const [notificationDropdown, setNotificationDropdown] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const [notifications, setNotifications] = useState([]);
+  const [unreadCount, setUnreadCount] = useState(0);
   const dropdownRef = useRef(null);
+  const notificationRef = useRef(null);
   const token = localStorage.getItem("token");
   const theme = localStorage.getItem("theme");
   const username = localStorage.getItem('username');
   const studentid = localStorage.getItem('profileid');
   const role = localStorage.getItem('role');
   const navigate = useNavigate();
+  const location = useLocation();
 
-  // Close dropdown when clicking outside
+  // Mock notifications data
+  const mockNotifications = [
+    { id: 1, message: "New assignment posted in Mathematics", time: "5 min ago", read: false, type: "assignment" },
+    { id: 2, message: "Your grade has been updated", time: "1 hour ago", read: false, type: "grade" },
+    { id: 3, message: "Faculty meeting scheduled", time: "2 hours ago", read: true, type: "meeting" },
+    { id: 4, message: "Library book due tomorrow", time: "1 day ago", read: true, type: "reminder" }
+  ];
+
+  // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        closeDropdown();
+        closeProfileDropdown();
+      }
+      if (notificationRef.current && !notificationRef.current.contains(event.target)) {
+        closeNotificationDropdown();
       }
     };
 
@@ -365,21 +63,47 @@ function Navbar({ toggleSidebar, isSidebarOpen }) {
     };
   }, []);
 
-  const toggleDropdown = () => {
+  // Load notifications
+  useEffect(() => {
+    if (token) {
+      setNotifications(mockNotifications);
+      const unread = mockNotifications.filter(notif => !notif.read).length;
+      setUnreadCount(unread);
+    }
+  }, [token]);
+
+  const toggleProfileDropdown = () => {
     if (profileDropdown) {
-      closeDropdown();
+      closeProfileDropdown();
     } else {
       setProfileDropdown(true);
       setIsClosing(false);
+      closeNotificationDropdown();
     }
   };
 
-  const closeDropdown = () => {
+  const toggleNotificationDropdown = () => {
+    if (notificationDropdown) {
+      closeNotificationDropdown();
+    } else {
+      setNotificationDropdown(true);
+      closeProfileDropdown();
+      // Mark notifications as read when dropdown opens
+      setNotifications(prev => prev.map(notif => ({ ...notif, read: true })));
+      setUnreadCount(0);
+    }
+  };
+
+  const closeProfileDropdown = () => {
     setIsClosing(true);
     setTimeout(() => {
       setProfileDropdown(false);
       setIsClosing(false);
-    }, 200); // Match this with your CSS transition duration
+    }, 200);
+  };
+
+  const closeNotificationDropdown = () => {
+    setNotificationDropdown(false);
   };
 
   const handleLogout = async () => {
@@ -388,7 +112,7 @@ function Navbar({ toggleSidebar, isSidebarOpen }) {
         withCredentials: true
       });
       localStorage.clear();
-      closeDropdown();
+      closeProfileDropdown();
       navigate('/login');
     } catch (error) {
       console.error('Logout error:', error);
@@ -398,7 +122,7 @@ function Navbar({ toggleSidebar, isSidebarOpen }) {
   const navigateAuthorized = (path) => {
     if (isAuthorized(role, path)) {
       navigate(path);
-      closeDropdown();
+      closeProfileDropdown();
     } else {
       alert("You don't have permission to access this page");
       navigate(getDefaultRoute(role));
@@ -410,9 +134,9 @@ function Navbar({ toggleSidebar, isSidebarOpen }) {
     if (!isAuthorized(role, path)) return null;
     
     return (
-      <li className="dropdown-item">
+      <li className="navbar-dropdown__item">
         <button
-          className="dropdown-link"
+          className="navbar-dropdown__link"
           onClick={() => navigateAuthorized(path)}
         >
           {icon}
@@ -422,100 +146,237 @@ function Navbar({ toggleSidebar, isSidebarOpen }) {
     );
   };
 
-  // useEffect(() => {
-  //   if (!token) {
-  //     navigate('/login');
-  //   }
-  // }, [token, navigate]);
+  const getRoleBadgeColor = () => {
+    switch(role) {
+      case 'admin': return '#e74c3c';
+      case 'faculty': return '#3498db';
+      case 'student': return '#2ecc71';
+      default: return '#95a5a6';
+    }
+  };
+
+  const getRoleDisplayName = () => {
+    switch(role) {
+      case 'admin': return 'Administrator';
+      case 'faculty': return 'Faculty';
+      case 'student': return 'Student';
+      default: return 'User';
+    }
+  };
 
   return (
-    <nav className={`navbar ${theme === "dark" ? "dark-theme" : "light-theme"}`}>
-      <div className="navbar-container">
-        <div className="navbar-left">
+    <nav className={`navbar-main ${theme === "dark" ? "navbar-main--dark" : "navbar-main--light"}`}>
+      <div className="navbar-main__container">
+        {/* Left Section */}
+        <div className="navbar-main__left">
           <button 
             onClick={toggleSidebar} 
-            className="toggle-btn"
+            className="navbar-main__toggle"
             aria-label="Toggle sidebar"
           >
             <FaBars
-              className={`toggle-icon ${isSidebarOpen ? "open" : ""}`}
+              className={`navbar-main__toggle-icon ${isSidebarOpen ? "navbar-main__toggle-icon--open" : ""}`}
             />
           </button>
-          <Link to="/" className="logo-link">
-            <h1 className="logo-text">Acadmigo</h1>
+          
+          <Link to="/" className="navbar-main__brand">
+            <div className="navbar-main__logo">
+              <div className="navbar-main__logo-icon">A</div>
+              <h1 className="navbar-main__logo-text">Academigo</h1>
+            </div>
           </Link>
+
+          {/* Navigation Links for Desktop */}
+          {/* <div className="navbar-main__navigation">
+            <Link 
+              to="/" 
+              className={`navbar-main__nav-link ${location.pathname === '/' ? 'navbar-main__nav-link--active' : ''}`}
+            >
+              Dashboard
+            </Link>
+            {isAuthorized(role, '/courses') && (
+              <Link 
+                to="/courses" 
+                className={`navbar-main__nav-link ${location.pathname.includes('/courses') ? 'navbar-main__nav-link--active' : ''}`}
+              >
+                Courses
+              </Link>
+            )}
+            {isAuthorized(role, '/grades') && (
+              <Link 
+                to="/grades" 
+                className={`navbar-main__nav-link ${location.pathname.includes('/grades') ? 'navbar-main__nav-link--active' : ''}`}
+              >
+                Grades
+              </Link>
+            )}
+          </div> */}
         </div>
 
-        <div className="navbar-right">
+        {/* Right Section */}
+        <div className="navbar-main__right">
           {token ? (
-            <div className="profile-container" ref={dropdownRef}>
-              <button
-                className="profile-btn"
-                onClick={toggleDropdown}
-                aria-expanded={profileDropdown}
-                aria-label="Profile menu"
-              >
-                <div className="navbar-profile-content">
-                  <FaUserCircle className="profile-icon" />
-                  <span className="username">{username}</span>
-                  {profileDropdown ? (
-                    <RxCross2 className="dropdown-toggle-icon" />
-                  ) : (
-                    <span className="dropdown-caret">▼</span>
+            <>
+              {/* Notifications */}
+              <div className="navbar-main__notifications" ref={notificationRef}>
+                <button
+                  className="navbar-main__notification-btn"
+                  onClick={toggleNotificationDropdown}
+                  aria-label="Notifications"
+                >
+                  <IoIosNotificationsOutline className="navbar-main__notification-icon" />
+                  {unreadCount > 0 && (
+                    <span className="navbar-main__notification-badge">
+                      {unreadCount > 9 ? '9+' : unreadCount}
+                    </span>
                   )}
-                </div>
-              </button>
+                </button>
 
-              {profileDropdown && (
-                <ul className={`dropdown-menu ${isClosing ? "closing" : ""}`}>
-                {renderAuthorizedLink(
-                  `/student-profile/${studentid}`,
-                  <FaUserEdit className="dropdown-icon" />,
-                  "Profile"
+                {notificationDropdown && (
+                  <div className="navbar-main__notification-dropdown">
+                    <div className="navbar-main__notification-header">
+                      <h3>Notifications</h3>
+                      <span className="navbar-main__notification-count">
+                        {unreadCount} unread
+                      </span>
+                    </div>
+                    <div className="navbar-main__notification-list">
+                      {notifications.slice(0, 5).map(notification => (
+                        <div 
+                          key={notification.id} 
+                          className={`navbar-main__notification-item ${!notification.read ? 'navbar-main__notification-item--unread' : ''}`}
+                        >
+                          <div className="navbar-main__notification-message">
+                            {notification.message}
+                          </div>
+                          <div className="navbar-main__notification-time">
+                            {notification.time}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="navbar-main__notification-footer">
+                      <button className="navbar-main__notification-view-all">
+                        View All Notifications
+                      </button>
+                    </div>
+                  </div>
                 )}
-                {renderAuthorizedLink(
-                  '/change-password',
-                  <FaKey className="dropdown-icon" />,
-                  "Change Password"
-                )}
-                <li className="dropdown-item">
-                  {/* <button
-                  style={{color: theme === 'dark' ? '#000000' :'#ff0057'}}
-                    className="dropdown-link logout-btn"
-                    onClick={handleLogout}
-                  > */}
+              </div>
 
-                  { role === 'student' || role === 'faculty' ?
-                    <Link className="dropdown-link logout-btn" to={ role === 'student' ? `/student/profile/${studentid}` : `/faculty/faculty-profile/${studentid}`} style={{color: theme === 'dark' ? '#000000' :'#3498db'}}> 
-                  <CgProfile className="dropdown-icon"/>
-                    <span>Profile</span>
-                  </Link>
-                  : <></>
-                  }
-                   
-                  {/* </button> */}
-                </li>
-                <li className="dropdown-item">
-                  <button
-                  style={{color: theme === 'dark' ? '#000000' :'#ff0057'}}
-                    className="dropdown-link logout-btn"
-                    onClick={handleLogout}
-                  >
-                    <FaSignOutAlt className="dropdown-icon" />
-                    <span>Logout</span>
-                  </button>
-                </li>
-              </ul>
-              )}
-            </div>
+              {/* Profile Dropdown */}
+              <div className="navbar-main__profile" ref={dropdownRef}>
+                <button
+                  className="navbar-main__profile-btn"
+                  onClick={toggleProfileDropdown}
+                  aria-expanded={profileDropdown}
+                  aria-label="Profile menu"
+                >
+                  <div className="navbar-main__profile-content">
+                    <div className="navbar-main__avatar">
+                      <FaUserCircle className="navbar-main__avatar-icon" />
+                    </div>
+                    <div className="navbar-main__user-info">
+                      <span className="navbar-main__username">{username}</span>
+                      <span 
+                        className="navbar-main__user-role"
+                        style={{ color: getRoleBadgeColor() }}
+                      >
+                        {getRoleDisplayName()}
+                      </span>
+                    </div>
+                    <FaChevronDown className={`navbar-main__dropdown-arrow ${profileDropdown ? 'navbar-main__dropdown-arrow--open' : ''}`} />
+                  </div>
+                </button>
+
+                {profileDropdown && (
+                  <div className={`navbar-main__dropdown ${isClosing ? "navbar-main__dropdown--closing" : ""}`}>
+                    {/* User Info in Dropdown */}
+                    <div className="navbar-main__dropdown-header">
+                      <div className="navbar-main__dropdown-avatar">
+                        <FaUserCircle className="navbar-main__dropdown-avatar-icon" />
+                      </div>
+                      <div className="navbar-main__dropdown-user">
+                        <div className="navbar-main__dropdown-username">{username}</div>
+                        <div 
+                          className="navbar-main__dropdown-role"
+                          style={{ backgroundColor: getRoleBadgeColor() }}
+                        >
+                          {getRoleDisplayName()}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="navbar-main__dropdown-divider"></div>
+
+                    {/* Dropdown Menu Items */}
+                    <ul className="navbar-main__dropdown-list">
+                      {renderAuthorizedLink(
+                        `/student-profile/${studentid}`,
+                        <FaUserEdit className="navbar-main__dropdown-item-icon" />,
+                        "My Profile"
+                      )}
+                      
+                      {renderAuthorizedLink(
+                        '/change-password',
+                        <FaKey className="navbar-main__dropdown-item-icon" />,
+                        "Change Password"
+                      )}
+                      
+                      {renderAuthorizedLink(
+                        '/settings',
+                        <FaCog className="navbar-main__dropdown-item-icon" />,
+                        "Settings"
+                      )}
+
+                      {/* Profile Link */}
+                      {(role === 'student' || role === 'faculty') && (
+                        <li className="navbar-main__dropdown-item">
+                          <Link 
+                            className="navbar-main__dropdown-link" 
+                            to={role === 'student' ? `/student/profile/${studentid}` : `/faculty/faculty-profile/${studentid}`}
+                            onClick={closeProfileDropdown}
+                          >
+                            <CgProfile className="navbar-main__dropdown-item-icon"/>
+                            <span>Profile</span>
+                          </Link>
+                        </li>
+                      )}
+                    </ul>
+
+                    <div className="navbar-main__dropdown-divider"></div>
+
+                    {/* Logout */}
+                    <ul className="navbar-main__dropdown-list">
+                      <li className="navbar-main__dropdown-item">
+                        <button
+                          className="navbar-main__dropdown-link navbar-main__dropdown-link--logout"
+                          onClick={handleLogout}
+                        >
+                          <FaSignOutAlt className="navbar-main__dropdown-item-icon" />
+                          <span>Logout</span>
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </>
           ) : (
-            <div className="auth-buttons">
-              <Link to="/register" className="auth-link register-link">
-                <FaUserPlus className="auth-icon" />
+            /* Auth Buttons for non-logged in users */
+            <div className="navbar-main__auth">
+              <Link 
+                to="/register" 
+                className="navbar-main__auth-link navbar-main__auth-link--register"
+              >
+                <FaUserPlus className="navbar-main__auth-icon" />
                 <span>Register</span>
               </Link>
-              <Link to="/login" className="auth-link login-link">
-                <FaSignInAlt className="auth-icon" />
+              <Link 
+                to="/login" 
+                className="navbar-main__auth-link navbar-main__auth-link--login"
+              >
+                <FaSignInAlt className="navbar-main__auth-icon" />
                 <span>Login</span>
               </Link>
             </div>
